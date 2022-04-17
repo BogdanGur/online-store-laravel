@@ -18,6 +18,6 @@ Route::get('/', "App\Http\Controllers\HomeController@index")->name("home");
 Route::get('/catalog', "App\Http\Controllers\CatalogController@index")->name("catalog");
 Route::get('/about', "App\Http\Controllers\AboutController@index")->name("about");
 Route::get('/contact', "App\Http\Controllers\ContactController@index")->name("contact");
-Route::get('/account', "App\Http\Controllers\AccountController@index")->name("account");
+Route::get('/account', "App\Http\Controllers\AccountController@index")->middleware("auth")->name("account");
 
 require __DIR__.'/auth.php';
