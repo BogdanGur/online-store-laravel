@@ -45,6 +45,7 @@
 
                 @auth
                     <li class="nav-item"><a href="{{ route("account") }}" class="nav-link" style="text-decoration: underline;">Account</a></li>
+                    <li class="nav-item"><a href="{{ route("logout") }}" class="nav-link" style="text-decoration: underline;">Logout</a></li>
                 @else
                     @if(Route::has("login"))
                         <li class="nav-item"><a href="{{ route("login") }}" class="nav-link" style="text-decoration: underline;">Login</a></li>

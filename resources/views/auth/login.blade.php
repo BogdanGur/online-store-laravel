@@ -8,7 +8,8 @@
     <h1>Sign In</h1>
     <div class="wrapper">
         <div class="sign-up-content">
-            <form method="POST" class="signup-form">
+            <form action="{{ route("login") }}" method="post" class="signup-form">
+                @csrf
                 <div class="form-textbox">
                     <label for="name">Full name</label>
                     <input type="text" name="name" id="name" />

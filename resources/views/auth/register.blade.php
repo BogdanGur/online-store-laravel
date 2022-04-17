@@ -8,38 +8,45 @@
         <h1>Sign up</h1>
         <div class="wrapper">
             <div class="sign-up-content">
-                <form method="POST" class="signup-form">
-                    <h2 class="form-title">What type of user are you ?</h2>
-                    <div class="form-radio">
-                        <input type="radio" name="member_level" value="newbie" id="newbie" checked="checked" />
-                        <label for="newbie">User</label>
+                @if($errors->any())
+                    @foreach($errors->all() as $error)
+                        {{ $error }}
+                    @endforeach
+                @endif
+                <form action="{{ route("register") }}" method="post" class="signup-form">
+                    @csrf
+                    <h2 class="form-title">Register</h2>
+{{--                    <div class="form-radio">--}}
+{{--                        <input type="radio" name="member_level" value="newbie" id="newbie" checked="checked" />--}}
+{{--                        <label for="newbie">User</label>--}}
 
-                        <input type="radio" name="member_level" value="average" id="average" />
-                        <label for="average">Admin</label>
-                    </div>
+{{--                        <input type="radio" name="member_level" value="average" id="average" />--}}
+{{--                        <label for="average">Admin</label>--}}
+{{--                    </div>--}}
 
                     <div class="form-textbox">
                         <label for="name">Full name</label>
-                        <input type="text" name="name" id="name" />
+                        <input type="text" name="name">
                     </div>
 
                     <div class="form-textbox">
                         <label for="email">Email</label>
-                        <input type="email" name="email" id="email" />
+                        <input type="email" name="email">
                     </div>
 
                     <div class="form-textbox">
                         <label for="pass">Password</label>
-                        <input type="password" name="pass" id="pass" />
-                    </div>
-
-                    <div class="form-group">
-                        <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                        <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                        <input type="password" name="password">
                     </div>
 
                     <div class="form-textbox">
-                        <input type="submit" name="submit" id="submit" class="submit" value="Create account" />
+                        <label for="pass">Password</label>
+                        <input type="password" name="password_confirmation">
+                    </div>
+
+                    <div class="form-textbox">
+                        <label for="pass">Confirm Password</label>
+                        <input type="submit" name="submit" id="submit" class="submit" value="Create account">
                     </div>
                 </form>
 
