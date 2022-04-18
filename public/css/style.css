@@ -12860,7 +12860,7 @@ h2 {
     margin: 0;
     padding: 0;
     font-size: 1em;
-    display: none;
+    /*display: none;*/
 }
 
 .main_login input[type=checkbox]:not(old) + label {
@@ -12959,6 +12959,122 @@ h2 {
 .main_login input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 30px white inset;
 }
+
+.panel {
+
+}
+.panel .content-panel {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+}
+.panel .content-panel .bgnavbar {
+    width: 20%;
+    background: #242426;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px -1px rgb(50 50 50 / 50%), 0 2px 4px -1px rgb(50 50 50 / 40%);
+}
+.panel .content-panel .bgnavbar .navbar-head {
+    padding: 30px;
+    border-bottom: 1px solid #ffffff;
+}
+.panel .content-panel .bgnavbar .navbar-head .navbar-name {
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+.panel .content-panel .bgnavbar .navbar-body {
+    padding: 10px 0;
+}
+.panel .content-panel .bgnavbar .navbar-body ul {
+    padding: 0;
+    margin: 0;
+}
+.panel .content-panel .bgnavbar .navbar-body ul li {
+    list-style-type: none;
+}
+.panel .content-panel .bgnavbar .navbar-body ul li a {
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
+    color: #ffffff;
+    width: 100%;
+    transition: .2s ease;
+}
+.panel .content-panel .bgnavbar .navbar-body ul li a:hover {
+    background: #3a3a3a;
+}
+.panel .content-panel .bgnavbar .navbar-body ul li a i {
+    margin-right: 5px;
+}
+.panel .content-panel .bgcontent {
+    margin-left: 15px;
+    width: 77%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px -1px rgb(50 50 50 / 20%), 0 2px 4px -1px rgb(50 50 50 / 20%);
+}
+.panel .content-panel .bgcontent .user-head {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #242426;
+}
+.panel .content-panel .bgcontent .user-head .user-info {
+    display: flex;
+}
+.panel .content-panel .bgcontent .user-head .user-info .user-photo {
+    width: 75px;
+    height: 75px;
+    overflow: hidden;
+    border-radius: 100%;
+}
+.panel .content-panel .bgcontent .user-head .user-info .user-photo img {
+
+}
+.panel .content-panel .bgcontent .user-head .user-info .user-name {
+    margin-left: 15px;
+}
+.panel .content-panel .bgcontent .user-head .user-info .user-name .uname {
+    font-weight: 700;
+    color: #242426;
+}
+.panel .content-panel .bgcontent .user-head .user-info .user-name .uemail {
+
+}
+.panel .content-panel .bgcontent .user-head .user-right_info {
+
+}
+.panel .content-panel .bgcontent .user-head .user-right_info .uphone {
+
+}
+
+.admin-header {
+    margin: 15px 0;
+}
+.admin-header .main-txt {
+    background: #242426;
+    padding: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px -1px rgb(50 50 50 / 20%), 0 2px 4px -1px rgb(50 50 50 / 20%);
+}
+.admin-header .main-txt h1 {
+    color: #ffffff;
+    margin: 0;
+}
+.admin-header .main-txt small {
+    color: #ffffff;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+
+
 
 @media screen and (max-width: 768px) {
     .wrapper {
