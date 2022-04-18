@@ -25,13 +25,23 @@
 {{--                    </div>--}}
 
                     <div class="form-textbox">
-                        <label for="name">Full name</label>
-                        <input type="text" name="name">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name">
+                    </div>
+
+                    <div class="form-textbox">
+                        <label for="surname">Surname</label>
+                        <input type="text" name="surname" id="surname">
                     </div>
 
                     <div class="form-textbox">
                         <label for="email">Email</label>
-                        <input type="email" name="email">
+                        <input type="email" name="email" id="email">
+                    </div>
+
+                    <div class="form-textbox">
+                        <label for="phone">Phone</label>
+                        <input type="tel" name="phone" id="email">
                     </div>
 
                     <div class="form-textbox">
@@ -40,12 +50,11 @@
                     </div>
 
                     <div class="form-textbox">
-                        <label for="pass">Password</label>
+                        <label for="pass">Confirm Password</label>
                         <input type="password" name="password_confirmation">
                     </div>
 
                     <div class="form-textbox">
-                        <label for="pass">Confirm Password</label>
                         <input type="submit" name="submit" id="submit" class="submit" value="Create account">
                     </div>
                 </form>

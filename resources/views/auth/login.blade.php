@@ -10,20 +10,19 @@
         <div class="sign-up-content">
             <form action="{{ route("login") }}" method="post" class="signup-form">
                 @csrf
-                <div class="form-textbox">
-                    <label for="name">Full name</label>
-                    <input type="text" name="name" id="name" />
-                </div>
 
                 <div class="form-textbox">
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email" />
+                    <input type="email" name="email" id="email">
                 </div>
 
                 <div class="form-textbox">
                     <label for="pass">Password</label>
-                    <input type="password" name="pass" id="pass" />
+                    <input type="password" name="password" id="pass">
                 </div>
+
+                <label for="remember">Запомнить меня?</label>
+                <input name="remember_me" id="remember" type="checkbox" value="1">
 
                 <div class="form-textbox">
                     <input type="submit" name="submit" id="submit" class="submit" value="Login" />
