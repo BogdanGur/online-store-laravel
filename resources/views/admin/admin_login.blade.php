@@ -33,11 +33,6 @@
     <h1>Admin</h1>
     <div class="wrapper">
         <div class="sign-up-content">
-            @if($errors->any())
-                @foreach($errors->all() as $error)
-                    {{ $error }}
-                @endforeach
-            @endif
             <form action="{{ route("admin_login") }}" method="post" class="signup-form">
                 @csrf
 
