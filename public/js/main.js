@@ -51,7 +51,7 @@
 
 	// loader
 	var loader = function() {
-		setTimeout(function() { 
+		setTimeout(function() {
 			if($('#ftco-loader').length > 0) {
 				$('#ftco-loader').removeClass('show');
 			}
@@ -63,7 +63,7 @@
    $.Scrollax();
 
 	var carousel = function() {
-	
+
 		$('.product-slider').owlCarousel({
 			autoplay: true,
 			loop: true,
@@ -143,19 +143,19 @@
 
 			if (st > 150) {
 				if ( !navbar.hasClass('scrolled') ) {
-					navbar.addClass('scrolled');	
+					navbar.addClass('scrolled');
 				}
-			} 
+			}
 			if (st < 150) {
 				if ( navbar.hasClass('scrolled') ) {
 					navbar.removeClass('scrolled sleep');
 				}
-			} 
+			}
 			if ( st > 350 ) {
 				if ( !navbar.hasClass('awake') ) {
-					navbar.addClass('awake');	
+					navbar.addClass('awake');
 				}
-				
+
 				if(sd.length > 0) {
 					sd.addClass('sleep');
 				}
@@ -173,9 +173,9 @@
 	};
 	scrollWindow();
 
-	
+
 	var counter = function() {
-		
+
 		$('#section-counter').waypoint( function( direction ) {
 
 			if( direction === 'down' && !$(this.element).hasClass('ftco-animated') ) {
@@ -192,7 +192,7 @@
 					  }, 7000
 					);
 				});
-				
+
 			}
 
 		} , { offset: '95%' } );
@@ -205,7 +205,7 @@
 		$('.ftco-animate').waypoint( function( direction ) {
 
 			if( direction === 'down' && !$(this.element).hasClass('ftco-animated') ) {
-				
+
 				i++;
 
 				$(this.element).addClass('item-animate');
@@ -227,9 +227,9 @@
 							el.removeClass('item-animate');
 						},  k * 50, 'easeInOutExpo' );
 					});
-					
+
 				}, 100);
-				
+
 			}
 
 		} , { offset: '95%' } );
@@ -298,20 +298,32 @@
 	var goHere = function() {
 
 		$('.mouse-icon').on('click', function(event){
-			
+
 			event.preventDefault();
 
 			$('html,body').animate({
 				scrollTop: $('.goto-here').offset().top
 			}, 500, 'easeInOutExpo');
-			
+
 			return false;
 		});
 	};
 	goHere();
 
 
-
-
 })(jQuery);
+
+ $(".open-edit-btn").on("click", function () {
+
+     $(this).find("i").toggle();
+     $(this).parent(".product-adm-btns").parent(".product-cont").find(".sign-up-content").slideToggle(200);
+ });
+
+ $(".content-panel").find(".navbar-body").find("ul").find("li").find("a").on("click", function (e) {
+    e.preventDefault();
+    var section = $(this).data("section");
+
+    $(".other-content").hide();
+    $("."+section+"-content").show();
+ });
 
