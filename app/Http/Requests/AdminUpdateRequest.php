@@ -36,7 +36,7 @@ class AdminUpdateRequest extends FormRequest
         return [
             "name.required" => "Вы не ввели имя",
             "name.min" => "Слишком короткое имя",
-            "surname.required" => "Вы не ввел фамилию",
+            "surname.required" => "Вы не ввели фамилию",
             "surname.min" => "Слишком короткая фамилия",
             "photo.mimes" => "Фото должно быть формата: jpeg, jpg, png",
             "email.required" => "Вы не ввели Email",
