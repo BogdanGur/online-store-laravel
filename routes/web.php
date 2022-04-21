@@ -32,6 +32,10 @@ Route::prefix("admin")->group(function() {
     Route::post('/login', "App\Http\Controllers\AdminController@adminLogin")->name("admin_login");
     Route::get('/logout', "App\Http\Controllers\AdminController@adminLogout")->name("admin_logout");
     Route::post('/update-admin', "App\Http\Controllers\AdminController@updateAdmin")->middleware('auth:admin')->name("update_admin");
+
+    Route::post("/add-product", "App\Http\Controllers\AdminController@addProduct")->middleware("auth:admin")->name("add_product");
+    Route::post("/update-product/{id}", "App\Http\Controllers\AdminController@updateProduct")->middleware("auth:admin")->name("update_product");
+    Route::get("/delete-product/{id}", "App\Http\Controllers\AdminController@deleteProduct")->middleware("auth:admin")->name("delete_product");
 });
 
 require __DIR__.'/auth.php';
