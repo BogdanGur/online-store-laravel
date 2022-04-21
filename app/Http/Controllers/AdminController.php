@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AdminRequest;
 use App\Http\Requests\AdminUpdateRequest;
 use App\Http\Requests\ProductRequest;
+use App\Http\Requests\SiteInfoRequest;
 use App\Models\Admin;
 use App\Models\Images;
 use App\Models\Product;
+use App\Models\Site;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +23,7 @@ class AdminController extends Controller
     public function index() {
 
         if(Auth::guard("admin")->check()) {
-            return view("admin.admin", ["admin" => Admin::find(Auth::guard("admin")->id()), "products" => Product::all()]);
+            return view("admin.admin", ["admin" => Admin::find(Auth::guard("admin")->id()), "products" => Product::all(), "site" => Site::find(1)]);
         }
         return redirect()->route("show_login");
     }
@@ -155,5 +157,43 @@ class AdminController extends Controller
         Product::find($id)->delete();
 
         return redirect()->route("admin")->with("success", "Продукт успешно удален");
+    }
+
+    public function updateSiteInfo(SiteInfoRequest $request) {
+        $site = Site::find(1);
+
+        $site->home_title = $request->home_title;
+        $site->home_mini_about = $request->home_mini_about;
+        $site->home_since = $request->home_since;
+        $site->home_subtitle = $request->home_subtitle;
+        $site->banner = $request->banner;
+        $site->about_title = $request->about_title;
+        $site->about_content = $request->about_content;
+        $site->contact_location = $request->contact_location;
+        $site->contact_phone = $request->contact_phone;
+        $site->contact_email = $request->contact_email;
+
+        if($request->hasFile("about_photo")) {
+            Storage::delete("public/site_images/".$site->about_photo);
+
+            $request->about_photo->store("site_images", "public");
+            $site->about_photo = $request->about_photo->hashName();
+        }
+        if($request->hasFile("main_bg")) {
+            Storage::delete("public/site_images/".$site->main_bg);
+
+            $request->main_bg->store("site_images", "public");
+            $site->main_bg = $request->main_bg->hashName();
+        }
+        if($request->hasFile("page_bg")) {
+            Storage::delete("public/site_images/".$site->page_bg);
+
+            $request->page_bg->store("site_images", "public");
+            $site->page_bg = $request->page_bg->hashName();
+        }
+
+        $site->save();
+
+        return redirect()->route("admin")->with("success", "Данные сайта успешно обновлены");
     }
 }

@@ -10171,6 +10171,7 @@ h1, h2, h3, h4, h5,
 }
 
 .ftco-navbar-light.ftco-navbar-light-2 {
+    background: #242424 !important;
     position: relative;
     top: 0;
 }
@@ -10324,12 +10325,13 @@ h1, h2, h3, h4, h5,
 }
 
 .ftco-navbar-light.scrolled .nav-item.active > a {
-    color: #f1b8c4 !important;
+    color: #242424 !important;
+    text-decoration: underline;
 }
 
 .ftco-navbar-light.scrolled .nav-item.cta > a {
     color: #fff !important;
-    background: #f1b8c4;
+    background: #242424;
     border: none !important;
 }
 
@@ -10534,12 +10536,12 @@ h1, h2, h3, h4, h5,
 }
 
 .hero-wrap .slider-text .breadcrumbs span a {
-    color: #000000;
+    color: #ffffff;
 }
 
 .hero-wrap .slider-text .bread {
-    font-weight: 100;
-    color: #000000;
+    font-weight: 300;
+    color: #ffffff;
     font-size: 40px;
     font-family: "Lato", Arial, sans-serif;
     letter-spacing: 3px;

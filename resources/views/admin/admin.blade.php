@@ -311,6 +311,127 @@
                             </div>
                         </div>
                     </div>
+                        <div class="other-content site-content" style="display: none;">
+                            <h3>Site Information</h3>
+
+                            <div class="sign-up-content">
+                                <form action="{{ route("update_site_info") }}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <h3>Home Section</h3>
+
+                                    <div class="form-textbox">
+                                        <label for="photo">Main background</label>
+                                        <input type="file" name="main_bg">
+                                    </div>
+                                    @if($errors->has("main_bg"))
+                                        <div class="alert alert-danger">{{ $errors->first("main_bg") }}</div>
+                                    @endif
+
+                                    <div class="form-textbox">
+                                        <label for="photo">Page background</label>
+                                        <input type="file" name="page_bg">
+                                    </div>
+                                    @if($errors->has("page_bg"))
+                                        <div class="alert alert-danger">{{ $errors->first("page_bg") }}</div>
+                                    @endif
+
+                                    <div class="form-textbox">
+                                        <label for="name">Home title</label>
+                                        <input type="text" name="home_title" value="{{ $site->home_title }}">
+                                    </div>
+                                    @if($errors->has("home_title"))
+                                        <div class="alert alert-danger">{{ $errors->first("home_title") }}</div>
+                                    @endif
+
+                                    <div class="form-textbox">
+                                        <label for="surname">Home subtitle</label>
+                                        <input type="text" name="home_subtitle" value="{{ $site->home_subtitle }}">
+                                    </div>
+                                    @if($errors->has("home_subtitle"))
+                                        <div class="alert alert-danger">{{ $errors->first("home_subtitle") }}</div>
+                                    @endif
+
+                                    <div class="form-textbox">
+                                        <label for="name">Home mini about</label>
+                                        <input type="text" name="home_mini_about" value="{{ $site->home_mini_about }}">
+                                    </div>
+                                    @if($errors->has("home_mini_about"))
+                                        <div class="alert alert-danger">{{ $errors->first("home_mini_about") }}</div>
+                                    @endif
+
+                                    <div class="form-textbox">
+                                        <label for="name">Home since</label>
+                                        <input type="text" name="home_since" value="{{ $site->home_since }}">
+                                    </div>
+                                    @if($errors->has("home_since"))
+                                        <div class="alert alert-danger">{{ $errors->first("home_since") }}</div>
+                                    @endif
+
+                                    <div class="form-textbox">
+                                        <label for="surname">Banner</label>
+                                        <input type="text" name="banner" value="{{ $site->banner }}">
+                                    </div>
+                                    @if($errors->has("banner"))
+                                        <div class="alert alert-danger">{{ $errors->first("banner") }}</div>
+                                    @endif
+
+                                    <h3>About Section</h3>
+
+                                    <div class="form-textbox">
+                                        <label for="photo">Photo</label>
+                                        <input type="file" name="about_photo">
+                                    </div>
+                                    @if($errors->has("about_photo"))
+                                        <div class="alert alert-danger">{{ $errors->first("about_photo") }}</div>
+                                    @endif
+
+                                    <div class="form-textbox">
+                                        <label for="surname">About title</label>
+                                        <input type="text" name="about_title" value="{{ $site->about_title }}">
+                                    </div>
+                                    @if($errors->has("about_title"))
+                                        <div class="alert alert-danger">{{ $errors->first("about_title") }}</div>
+                                    @endif
+
+                                    <div class="form-textbox">
+                                        <textarea name="about_content" placeholder="About content">{{ $site->about_content }}</textarea>
+                                    </div>
+                                    @if($errors->has("about_content"))
+                                        <div class="alert alert-danger">{{ $errors->first("about_content") }}</div>
+                                    @endif
+
+                                    <h3>Contact</h3>
+
+                                    <div class="form-textbox">
+                                        <label for="surname">Location</label>
+                                        <input type="text" name="contact_location" value="{{ $site->contact_location }}">
+                                    </div>
+                                    @if($errors->has("contact_location"))
+                                        <div class="alert alert-danger">{{ $errors->first("contact_location") }}</div>
+                                    @endif
+
+                                    <div class="form-textbox">
+                                        <label for="surname">Phone</label>
+                                        <input type="tel" name="contact_phone" value="{{ $site->contact_phone }}">
+                                    </div>
+                                    @if($errors->has("contact_phone"))
+                                        <div class="alert alert-danger">{{ $errors->first("contact_phone") }}</div>
+                                    @endif
+
+                                    <div class="form-textbox">
+                                        <label for="surname">Email</label>
+                                        <input type="email" name="contact_email" value="{{ $site->contact_email }}">
+                                    </div>
+                                    @if($errors->has("contact_email"))
+                                        <div class="alert alert-danger">{{ $errors->first("contact_email") }}</div>
+                                    @endif
+
+                                    <div class="form-textbox">
+                                        <input type="submit" name="submit" class="submit" value="Update" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -319,6 +440,7 @@
 
         <script src="{{ asset("js/jquery.min.js") }}"></script>
         <script src="{{ asset("js/jquery-migrate-3.0.1.min.js") }}"></script>
+        <script src="{{ asset("js/nicEdit.js") }}"></script>
         <script src="{{ asset("js/popper.min.js") }}"></script>
         <script src="{{ asset("js/bootstrap.min.js") }}"></script>
         <script src="{{ asset("js/jquery.easing.1.3.js") }}"></script>
@@ -330,8 +452,6 @@
         <script src="{{ asset("js/jquery.animateNumber.min.js") }}"></script>
         <script src="{{ asset("js/bootstrap-datepicker.js") }}"></script>
         <script src="{{ asset("js/scrollax.min.js") }}"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-        <script src="{{ asset("js/google-map.js") }}"></script>
         <script src="{{ asset("js/main.js") }}"></script>
         <script src="https://kit.fontawesome.com/06c89e9946.js" crossorigin="anonymous"></script>
 </body>

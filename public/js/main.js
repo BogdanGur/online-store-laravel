@@ -327,3 +327,5 @@
     $("."+section+"-content").show();
  });
 
+ // bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+
