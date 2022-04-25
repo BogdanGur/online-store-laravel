@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" href="{{ asset("css/open-iconic-bootstrap.min.css") }}">
     <link rel="stylesheet" href="{{ asset("css/animate.css") }}">
 
@@ -138,6 +139,7 @@
 
 <script src="{{ asset("js/jquery.min.js") }}"></script>
 <script src="{{ asset("js/jquery-migrate-3.0.1.min.js") }}"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="{{ asset("js/popper.min.js") }}"></script>
 <script src="{{ asset("js/bootstrap.min.js") }}"></script>
 <script src="{{ asset("js/jquery.easing.1.3.js") }}"></script>
@@ -149,8 +151,6 @@
 <script src="{{ asset("js/jquery.animateNumber.min.js") }}"></script>
 <script src="{{ asset("js/bootstrap-datepicker.js") }}"></script>
 <script src="{{ asset("js/scrollax.min.js") }}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script src="{{ asset("js/google-map.js") }}"></script>
 <script src="{{ asset("js/main.js") }}"></script>
 <script src="https://kit.fontawesome.com/06c89e9946.js" crossorigin="anonymous"></script>
 </body>

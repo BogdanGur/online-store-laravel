@@ -46,22 +46,22 @@
                 <div class="w-100"></div>
                 <div class="col-md-3 d-flex">
                     <div class="info bg-white p-4">
-                        <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+                        <p><span>Address:</span> {{ $site->contact_location }}</p>
                     </div>
                 </div>
                 <div class="col-md-3 d-flex">
                     <div class="info bg-white p-4">
-                        <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+                        <p><span>Phone:</span> <a href="tel:{{ $site->contact_phone }}">{{ $site->contact_phone }}</a></p>
                     </div>
                 </div>
                 <div class="col-md-3 d-flex">
                     <div class="info bg-white p-4">
-                        <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+                        <p><span>Email:</span> <a href="mailto:{{ $site->contact_email }}">{{ $site->contact_email }}</a></p>
                     </div>
                 </div>
                 <div class="col-md-3 d-flex">
                     <div class="info bg-white p-4">
-                        <p><span>Website</span> <a href="#">yoursite.com</a></p>
+                        <p><span>Website</span> <a href="{{ Illuminate\Support\Facades\URL::route("home") }}">{{ \Illuminate\Support\Facades\URL::route("home") }}</a></p>
                     </div>
                 </div>
             </div>

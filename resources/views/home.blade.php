@@ -141,92 +141,52 @@
         </div>
     </section>
 
-    <section class="ftco-section bg-light">
-        <div class="container">
-            <div class="row justify-content-center mb-3 pb-3">
-                <div class="col-md-12 heading-section text-center ftco-animate">
-                    <h1 class="big">Products</h1>
-                    <h2 class="mb-4">Our Products</h2>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm col-md-6 col-lg ftco-animate">
-                    <div class="product">
-                        <a href="#" class="img-prod"><img class="img-fluid" src="images/product-1.jpg" alt="Colorlib Template"></a>
-                        <div class="text py-3 px-3">
-                            <h3><a href="#">Young Woman Wearing Dress</a></h3>
-                            <div class="d-flex">
-                                <div class="pricing">
-                                    <p class="price"><span>$120.00</span></p>
-                                </div>
-                            </div>
-                            <hr>
-                            <p class="bottom-area d-flex">
-                                <a href="#" class="add-to-cart"><span>Add to cart <i class="fas fa-plus"></i></span></a>
-                                <a href="#" class="ml-auto"><span><i class="far fa-heart"></i></span></a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm col-md-6 col-lg ftco-animate">
-                    <div class="product">
-                        <a href="#" class="img-prod"><img class="img-fluid" src="images/product-2.jpg" alt="Colorlib Template"></a>
-                        <div class="text py-3 px-3">
-                            <h3><a href="#">Young Woman Wearing Dress</a></h3>
-                            <div class="d-flex">
-                                <div class="pricing">
-                                    <p class="price"><span>$120.00</span></p>
-                                </div>
-                            </div>
-                            <hr>
-                            <p class="bottom-area d-flex">
-                                <a href="#" class="add-to-cart"><span>Add to cart <i class="fas fa-plus"></i></span></a>
-                                <a href="#" class="ml-auto"><span><i class="far fa-heart"></i></span></a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm col-md-6 col-lg ftco-animate">
-                    <div class="product">
-                        <a href="#" class="img-prod"><img class="img-fluid" src="images/product-3.jpg" alt="Colorlib Template"></a>
-                        <div class="text py-3 px-3">
-                            <h3><a href="#">Young Woman Wearing Dress</a></h3>
-                            <div class="d-flex">
-                                <div class="pricing">
-                                    <p class="price"><span>$120.00</span></p>
-                                </div>
-                            </div>
-                            <hr>
-                            <p class="bottom-area d-flex">
-                                <a href="#" class="add-to-cart"><span>Add to cart <i class="fas fa-plus"></i></span></a>
-                                <a href="#" class="ml-auto"><span><i class="far fa-heart"></i></span></a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm col-md-6 col-lg ftco-animate">
-                    <div class="product">
-                        <a href="#" class="img-prod"><img class="img-fluid" src="images/product-4.jpg" alt="Colorlib Template"></a>
-                        <div class="text py-3 px-3">
-                            <h3><a href="#">Young Woman Wearing Dress</a></h3>
-                            <div class="d-flex">
-                                <div class="pricing">
-                                    <p class="price"><span>$120.00</span></p>
-                                </div>
-                            </div>
-                            <hr>
-                            <p class="bottom-area d-flex">
-                                <a href="#" class="add-to-cart"><span>Add to cart <i class="fas fa-plus"></i></span></a>
-                                <a href="#" class="ml-auto"><span><i class="far fa-heart"></i></span></a>
-                            </p>
-                        </div>
+    @if($products)
+        <section class="ftco-section bg-light">
+            <div class="container">
+                <div class="row justify-content-center mb-3 pb-3">
+                    <div class="col-md-12 heading-section text-center ftco-animate">
+                        <h1 class="big">Products</h1>
+                        <h2 class="mb-4">Our Products</h2>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+            <div class="container-fluid">
+                <div class="row">
+                    @foreach($products as $product)
+                        <div class="col-sm col-md-6 col-lg ftco-animate">
+                            <div class="product">
+                                <a href="{{ route("product_page", $product->slug) }}" class="img-prod">
+                                    <img class="img-fluid" src="{{ \Illuminate\Support\Facades\Storage::url("public/product_photos/".$product->image->img) }}" alt="BG Corp">
+                                    @if($product->discount) <span class="status">{{ $product->discount }}%</span> @endif
+                                </a>
+                                <div class="text py-3 px-3">
+                                    <h3><a href="{{ route("product_page", $product->slug) }}">{{ $product->name }}</a></h3>
+                                    <div class="d-flex">
+                                        <div class="pricing">
+                                            @if($product->discount)
+                                                <p class="price">
+                                                    <span class="mr-2 price-dc">${{ $product->price }}</span>
+                                                    <span class="price-sale">${{ $product->price*(1-$product->discount/100) }}</span>
+                                                </p>
+                                            @else
+                                                <p class="price"><span>${{ $product->price }}</span></p>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <p class="bottom-area d-flex">
+                                        <a href="#" class="add-to-cart"><span>Add to cart <i class="fas fa-plus"></i></span></a>
+                                        <a href="#" class="ml-auto"><span><i class="far fa-heart"></i></span></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
 
     <section class="ftco-section ftco-section-more img" style="background-image: url(images/bg_5.jpg);">
         <div class="container">

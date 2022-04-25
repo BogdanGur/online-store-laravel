@@ -47,7 +47,6 @@
                     <ul>
                         <li><a href="#" data-section="main">Main</a></li>
                         <li><a href="#" data-section="product">Products</a></li>
-                        <li><a href="#" data-section="about">About</a></li>
                         <li><a href="#" data-section="site">Site</a></li>
                     </ul>
                     <br>
