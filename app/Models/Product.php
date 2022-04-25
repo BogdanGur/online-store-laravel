@@ -12,4 +12,8 @@ class Product extends Model
     public function image() {
         return $this->hasOne(Images::class);
     }
+
+    public function all_images() {
+        return $this->hasMany(Images::class);
+    }
 }

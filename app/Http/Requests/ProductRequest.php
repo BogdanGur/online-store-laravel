@@ -28,7 +28,7 @@ class ProductRequest extends FormRequest
             "description" => "required|min:5",
             "price" => "required|integer",
             "size" => "required",
-            "image.*" => "mimes:jpeg,jpg,png",
+            "image.*" => "mimes:jpeg,jpg,png,webp",
         ];
     }
 
@@ -40,7 +40,7 @@ class ProductRequest extends FormRequest
             "price.required" => "Вы не ввели цену",
             "price.integer" => "Не похоже на цену товара",
             "image.required" => "Выберите фото",
-            "image.mimes" => "Фото должно быть формата: jpeg, jpg, png",
+            "image.mimes" => "Фото должно быть формата: jpeg, jpg, png, webp",
         ];
     }
 }
