@@ -1353,7 +1353,7 @@ pre code {
         flex-basis: 0;
         -webkit-box-flex: 1;
         -ms-flex-positive: 1;
-        flex-grow: 1;
+        /*flex-grow: 1;*/
         max-width: 100%;
     }
 
@@ -5150,25 +5150,24 @@ input[type="button"].btn-block {
     padding-left: 0;
     list-style: none;
     border-radius: 0.25rem;
+    justify-content: center;
 }
 
 .page-link {
     position: relative;
     display: block;
-    padding: 0.5rem 0.75rem;
     margin-left: -1px;
     line-height: 1.25;
-    color: #78d5ef;
-    background-color: #fff;
-    border: 1px solid #dee2e6;
+    color: #f1b8c4;
+    border: 1px solid #f1b8c4;
 }
 
 .page-link:hover {
     z-index: 2;
-    color: #34c0e7;
+    color: #ffffff;
     text-decoration: none;
-    background-color: #e9ecef;
-    border-color: #dee2e6;
+    background-color: #f1b8c4;
+    border-color: #f1b8c4;
 }
 
 .page-link:focus {
@@ -5182,29 +5181,25 @@ input[type="button"].btn-block {
     cursor: pointer;
 }
 
-.page-item:first-child .page-link {
-    margin-left: 0;
-    border-top-left-radius: 0.25rem;
-    border-bottom-left-radius: 0.25rem;
+.page-item .page-link {
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    margin: 0 2px;
 }
-
-.page-item:last-child .page-link {
-    border-top-right-radius: 0.25rem;
-    border-bottom-right-radius: 0.25rem;
-}
-
 .page-item.active .page-link {
     z-index: 1;
     color: #fff;
-    background-color: #78d5ef;
-    border-color: #78d5ef;
+    background-color: #f1b8c4;
+    border-color: #f1b8c4;
 }
 
 .page-item.disabled .page-link {
     color: #6c757d;
     pointer-events: none;
     cursor: auto;
-    background-color: #fff;
     border-color: #dee2e6;
 }
 
@@ -5214,30 +5209,10 @@ input[type="button"].btn-block {
     line-height: 1.5;
 }
 
-.pagination-lg .page-item:first-child .page-link {
-    border-top-left-radius: 0.3rem;
-    border-bottom-left-radius: 0.3rem;
-}
-
-.pagination-lg .page-item:last-child .page-link {
-    border-top-right-radius: 0.3rem;
-    border-bottom-right-radius: 0.3rem;
-}
-
 .pagination-sm .page-link {
     padding: 0.25rem 0.5rem;
     font-size: 0.875rem;
     line-height: 1.5;
-}
-
-.pagination-sm .page-item:first-child .page-link {
-    border-top-left-radius: 0.2rem;
-    border-bottom-left-radius: 0.2rem;
-}
-
-.pagination-sm .page-item:last-child .page-link {
-    border-top-right-radius: 0.2rem;
-    border-bottom-right-radius: 0.2rem;
 }
 
 .badge {
@@ -10179,9 +10154,11 @@ h1, h2, h3, h4, h5,
 .ftco-navbar-light .navbar-brand {
     color: #ffffff;
 }
-
-.ftco-navbar-light .navbar-brand:hover, .ftco-navbar-light .navbar-brand:focus {
-    color: #000000;
+.product_images_all {
+    margin-top: 20px;
+}
+.product_images_all .mini_img {
+    margin: 0 5px;
 }
 
 @media (max-width: 991.98px) {
@@ -10532,7 +10509,7 @@ h1, h2, h3, h4, h5,
 }
 
 .hero-wrap .slider-text .breadcrumbs span {
-    color: rgba(0, 0, 0, 0.7);
+    color: #ffffff;
 }
 
 .hero-wrap .slider-text .breadcrumbs span a {
@@ -10767,26 +10744,26 @@ h1, h2, h3, h4, h5,
 }
 
 .btn.btn-primary {
-    background: #f1b8c4;
-    border: 1px solid #f1b8c4;
+    background: #242424;
+    border: 1px solid #242424;
     color: #fff;
 }
 
 .btn.btn-primary:hover {
-    border: 1px solid #f1b8c4;
+    border: 1px solid #242424;
     background: transparent;
-    color: #f1b8c4;
+    color: #242424;
 }
 
 .btn.btn-primary.btn-outline-primary {
-    border: 1px solid #f1b8c4;
+    border: 1px solid #242424;
     background: transparent;
-    color: #f1b8c4;
+    color: #242424;
 }
 
 .btn.btn-primary.btn-outline-primary:hover {
     border: 1px solid transparent;
-    background: #f1b8c4;
+    background: #242424;
     color: #fff;
 }
 
@@ -10879,6 +10856,7 @@ h1, h2, h3, h4, h5,
     position: relative;
     display: block;
     overflow: hidden;
+    width: 300px;
 }
 
 .product .img-prod span.status {
@@ -10962,7 +10940,7 @@ h1, h2, h3, h4, h5,
     font-weight: 400;
 }
 
-.product .text p.price span.price-dc {
+.product .text p.price span.price-dc, .product-details .price span.price-dc {
     text-decoration: line-through;
     color: #b3b3b3;
 }

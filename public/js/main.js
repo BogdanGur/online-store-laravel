@@ -328,4 +328,42 @@
  });
 
  // bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+ // $('.product_images_all').slick({
+ //     infinite: false,
+ //     slidesToShow: 3,
+ //     slidesToScroll: 3,
+ //     arrows: false,
+ //     dots: false
+ // });
 
+ $('.slider_big').slick({
+     slidesToShow: 1,
+     slidesToScroll: 1,
+     arrows: false,
+     fade: true,
+     asNavFor: '.product_images_all'
+ });
+ $('.product_images_all').slick({
+     infinite: false,
+     slidesToShow: 3,
+     slidesToScroll: 1,
+     asNavFor: '.slider_big',
+     arrows: false,
+     dots: false,
+     focusOnSelect: true
+ });
+
+ $(".quantity-right-plus").on("click", function () {
+     var current_num = $("input[name='quantity']").val();
+
+     current_num++;
+     $("input[name='quantity']").val(current_num);
+ });
+
+ $(".quantity-left-minus").on("click", function () {
+     var current_num = $("input[name='quantity']").val();
+
+     if(current_num == 1) return false
+     current_num--;
+     $("input[name='quantity']").val(current_num);
+ });
