@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Bogur\Bogur;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,9 @@ Route::get('/', "App\Http\Controllers\HomeController@index")->name("home");
 Route::get('/catalog', "App\Http\Controllers\CatalogController@index")->name("catalog");
 Route::get('/about', "App\Http\Controllers\AboutController@index")->name("about");
 Route::get('/contact', "App\Http\Controllers\ContactController@index")->name("contact");
+
+#Product Page
+Route::get("/product/{slug}", "App\Http\Controllers\ProductPageController@index")->name("product_page");
 
 #Account
 Route::prefix("account")->middleware(['auth'])->group(function() {
