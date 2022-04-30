@@ -19,6 +19,15 @@ Route::get('/catalog', "App\Http\Controllers\CatalogController@index")->name("ca
 Route::get('/about', "App\Http\Controllers\AboutController@index")->name("about");
 Route::get('/contact', "App\Http\Controllers\ContactController@index")->name("contact");
 
+#Cart
+Route::prefix("cart")->group(function () {
+    Route::get('/', "App\Http\Controllers\CartController@index")->name("cart");
+    Route::post("/add-product", "App\Http\Controllers\CartController@addProduct")->middleware("auth")->name("add_cart");
+    Route::post("/fast-add-product", "App\Http\Controllers\CartController@fastAddProduct")->middleware("auth")->name("fast_add_cart");
+    Route::post("/update-product", "App\Http\Controllers\CartController@updateProduct")->middleware("auth")->name("update_cart");
+    Route::get("/remove-product/{id}", "App\Http\Controllers\CartController@removeProduct")->middleware("auth")->name("remove_cart");
+});
+
 #Product Page
 Route::get("/product/{slug}", "App\Http\Controllers\ProductPageController@index")->name("product_page");
 
