@@ -43,7 +43,7 @@
                         <p class="price"><span>${{ number_format($product->price, 0, " ") }}</span></p>
                     @endif
                     <p>{{ $product->description }}</p>
-                    <div class="row mt-4">
+                    <div class="row mt-4 product-info">
                         <div class="col-md-6">
                             <div class="form-group d-flex">
                                 <div class="select-wrap">
@@ -71,8 +71,10 @@
                          </button>
                         </span>
                         </div>
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <input type="hidden" name="product_price" value="{{ $product->price }}">
                     </div>
-                    <p><a href="cart.html" class="btn btn-primary py-3 px-5">Add to Cart</a></p>
+                    <p><a href="#" class="btn btn-primary py-3 px-5 add-to-cart">Add to Cart</a></p>
                 </div>
             </div>
         </div>

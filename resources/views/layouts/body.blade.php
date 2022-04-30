@@ -4,6 +4,7 @@
     <title>@yield("title")</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
@@ -55,7 +56,7 @@
                         <li class="nav-item"><a href="{{ route("register") }}" class="nav-link" style="text-decoration: underline;">Register</a></li>
                     @endif
                 @endauth
-                <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i>[0]</a></li>
+                <li class="nav-item cta cta-colored"><a href="{{ route("cart") }}" class="nav-link shop-cart"><i class="fas fa-shopping-cart"></i>[{{ $total_cart }}]</a></li>
 
             </ul>
         </div>

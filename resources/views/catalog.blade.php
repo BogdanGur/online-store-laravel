@@ -40,7 +40,15 @@
                                 </div>
                                 <hr>
                                 <p class="bottom-area d-flex">
-                                    <a href="#" class="add-to-cart"><span>Add to cart <i class="fas fa-plus"></i></span></a>
+                                    <a href="#" class="add-to-cart add-to-cart-fast cart_but_{{ $product->id }}"><span>Add to cart <i class="fas fa-plus"></i><i class="fas fa-check" style="display: none;"></i></span></a>
+                                    <select name="size">
+                                        <option value="S">S</option>
+                                        <option value="M">M</option>
+                                        <option value="L">L</option>
+                                        <option value="XL">XL</option>
+                                    </select>
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <input type="hidden" name="price" value="{{ $product->price }}">
                                     <a href="#" class="ml-auto"><span><i class="far fa-heart"></i></span></a>
                                 </p>
                             </div>
