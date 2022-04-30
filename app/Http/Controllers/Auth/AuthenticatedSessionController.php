@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\Cart;
 use App\Models\Site;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        return view('auth.login', ["site" => Site::find(1)]);
+        return view('auth.login', ["site" => Site::find(1), "total_cart" => count(Cart::where("user_id", Auth::id())->get())]);
     }
 
     /**

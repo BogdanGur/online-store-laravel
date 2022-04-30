@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use App\Models\Site;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -21,7 +22,7 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register', ["site" => Site::find(1)]);
+        return view('auth.register', ["site" => Site::find(1), "total_cart" => count(Cart::where("user_id", Auth::id())->get())]);
     }
 
     /**

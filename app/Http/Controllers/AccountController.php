@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserUpdateRequest;
+use App\Models\Cart;
 use App\Models\Site;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class AccountController extends Controller
 
     public function index() {
 
-        return view("account", ["user" => User::find(Auth::id()), "site" => Site::find(1)]);
+        return view("account", ["user" => User::find(Auth::id()), "site" => Site::find(1), "total_cart" => count(Cart::where("user_id", Auth::id())->get())]);
     }
 
     public function updateUser(UserUpdateRequest $request) {
