@@ -367,3 +367,92 @@
      current_num--;
      $("input[name='quantity']").val(current_num);
  });
+
+ $.ajaxSetup({
+     headers: {
+         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+     }
+ });
+
+ $(".add-to-cart").on("click", function (e) {
+     e.preventDefault();
+
+     var product_id = $(".product-details").find(".product-info").find("input[name='product_id']").val();
+     var size = $(".product-details").find(".product-info").find("select[name='size']").val();
+     var quantity = $(".product-details").find(".product-info").find("input[name='quantity']").val();
+     var total = $(".product-details").find(".product-info").find("input[name='product_price']").val();
+
+     $.ajax({
+         url: "/cart/add-product",
+         type: "POST",
+         data: ({
+             product_id: product_id,
+             size: size,
+             quantity: quantity,
+             total: total
+         }),
+         success: function (result) {
+            console.log(result["success"]);
+
+            $(".shop-cart").html('<i class="fas fa-shopping-cart"></i>['+result["total"]+']');
+         }
+     });
+ });
+
+ $(".add-to-cart-fast").on("click", function (e) {
+     e.preventDefault();
+
+     var product_id = $(this).parent(".bottom-area").find("input[name='product_id']").val();
+     var size = $(this).parent(".bottom-area").find("select[name='size']").val();
+     var price = $(this).parent(".bottom-area").find("input[name='price']").val();
+
+     var this_but = $(".cart_but_"+product_id);
+
+     $.ajax({
+         url: "/cart/add-product",
+         type: "POST",
+         data: ({
+             product_id: product_id,
+             size: size,
+             quantity: 1,
+             total: price
+         }),
+         success: function (result) {
+             console.log(result["success"]);
+
+             $(".shop-cart").html('<i class="fas fa-shopping-cart"></i>['+result["total"]+']');
+             this_but.find("span").find("i").toggle();
+             this_but.find("span").css("color", "#3aab53");
+         }
+     });
+ });
+
+ $("td.quantity").find("input[name='quantity']").on("change", function() {
+     var product_id = $(this).data("pid");
+     var quantity = $(this).val();
+     var price = $(this).data("price");
+     var discount = $(this).data("discount");
+
+     $.ajax({
+         url: "/cart/update-product",
+         type: "POST",
+         data: ({
+             product_id: product_id,
+             quantity: quantity,
+             price: price
+         }),
+         success: function (result) {
+             console.log(result["success"]);
+
+             location.reload();
+             // if(discount)
+             //     done_price = parseInt(result["product_total"])*(1-discount/100);
+             // else
+             //     done_price = parseInt(result["product_total"]);
+             //
+             // $(".cart_product_"+product_id).find("td.total").html("$"+done_price);
+         }
+     });
+ });
+
+
