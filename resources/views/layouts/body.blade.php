@@ -31,6 +31,10 @@
 </head>
 <body>
 
+<div class="flying_message">
+    <div class="alert alert-success"></div>
+</div>
+
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light @if(!Request::is("/")) ftco-navbar-light-2 @endif" id="ftco-navbar">
     <div class="container">
         <a class="navbar-brand" href="{{ route("home") }}">BG Entertainment</a>

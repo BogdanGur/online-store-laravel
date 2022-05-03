@@ -49,7 +49,13 @@
                                     </select>
                                     <input type="hidden" name="product_id" value="{{ $product->id }}">
                                     <input type="hidden" name="price" value="{{ $product->price }}">
-                                    <a href="#" class="ml-auto"><span><i class="far fa-heart"></i></span></a>
+                                    <span class="ml-auto like_prod">
+                                        @if($product->like)
+                                            <span class="delete_like del_prod_{{ $product->id }}" data-id="{{ $product->like->id }}"><i class="fas fa-heart" style="color: #ff0000;"></i></span>
+                                        @else
+                                            <span class="like_product like_prod_{{ $product->id }}"><i class="far fa-heart"></i></span>
+                                        @endif
+                                    </span>
                                 </p>
                             </div>
                         </div>

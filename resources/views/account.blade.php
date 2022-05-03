@@ -13,7 +13,6 @@
                     <div class="navbar-body">
                         <ul>
                             <li><a href="#"><i class="fas fa-home"></i> Main</a></li>
-                            <li><a href="#"><i class="fas fa-shopping-bag"></i> Products</a></li>
                             <li><a href="#"><i class="fas fa-heart"></i> Liked</a></li>
                             <li><a href="#"><i class="far fa-credit-card"></i> Orders</a></li>
                         </ul>
