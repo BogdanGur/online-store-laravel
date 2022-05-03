@@ -16,4 +16,8 @@ class Product extends Model
     public function all_images() {
         return $this->hasMany(Images::class);
     }
+
+    public function like() {
+        return $this->hasOne(Like::class);
+    }
 }
