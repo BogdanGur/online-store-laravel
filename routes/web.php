@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 #Main Menu
 Route::get('/', "App\Http\Controllers\HomeController@index")->name("home");
 Route::get('/catalog', "App\Http\Controllers\CatalogController@index")->name("catalog");
+Route::post('/catalog/like-product', "App\Http\Controllers\CatalogController@likeProduct")->middleware("auth")->name("like_product");
+Route::post('/catalog/delete-like', "App\Http\Controllers\CatalogController@deleteLike")->middleware("auth")->name("delete_like");
 Route::get('/about', "App\Http\Controllers\AboutController@index")->name("about");
 Route::get('/contact', "App\Http\Controllers\ContactController@index")->name("contact");
 
