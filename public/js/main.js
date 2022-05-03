@@ -455,4 +455,49 @@
      });
  });
 
+ $(".like_product").on("click", function() {
+     var product_id = $(this).parent(".like_prod").parent(".bottom-area").find("input[name='product_id']").val();
+
+     $.ajax({
+         url: "/catalog/like-product",
+         type: "POST",
+         data: ({
+             product_id: product_id
+         }),
+         success: function (result) {
+             $(".like_prod_"+product_id).html('<i class="fas fa-heart" style="color: #ff0000;"></i>');
+
+             $(".flying_message").fadeIn(350);
+             $(".flying_message").find(".alert").html(result["success"]);
+
+             setTimeout(function () {
+                 $(".flying_message").fadeOut(350);
+             }, 2000);
+         }
+     });
+ });
+
+ $(".delete_like").on("click", function() {
+     var id = $(this).data("id");
+     var product_id = $(this).parent(".ml-auto").parent(".bottom-area").find("input[name='product_id']").val();
+
+     $.ajax({
+         url: "/catalog/delete-like",
+         type: "POST",
+         data: ({
+             id: id
+         }),
+         success: function (result) {
+             $(".del_prod_"+product_id).html('<i class="far fa-heart"></i>');
+
+             $(".flying_message").fadeIn(350);
+             $(".flying_message").find(".alert").html(result["success"]);
+
+             setTimeout(function () {
+                 $(".flying_message").fadeOut(350);
+             }, 2000);
+         }
+     });
+ });
+
 

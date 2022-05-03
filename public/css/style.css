@@ -13201,6 +13201,18 @@ h2 {
     flex-direction: column;
     align-items: center;
 }
+.flying_message {
+    display: none;
+    position: fixed;
+    z-index: 120;
+    width: 100%;
+}
+.flying_message .alert {
+    text-align: center;
+}
+.like_prod span {
+    cursor: pointer;
+}
 
 @media screen and (max-width: 768px) {
     .wrapper {
