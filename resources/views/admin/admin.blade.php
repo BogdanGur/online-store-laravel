@@ -153,8 +153,8 @@
                                                 <div class="right-pr-info">
                                                     @if($product->discount)
                                                         <div class="pr-price"><s>{{ $product->price }}$</s></div>
-                                                        <div class="pr-price_ds">{{ $product->price * (1 - $product->discount / 100) }}$</div>
                                                         <div class="pr-discount">-{{ $product->discount }}%</div>
+                                                        <div class="pr-price_ds">{{ $product->price * (1 - $product->discount / 100) }}$</div>
                                                     @else
                                                         <div class="pr-price">{{ $product->price }}$</div>
                                                     @endif

@@ -157,7 +157,7 @@
                         <div class="col-sm col-md-6 col-lg ftco-animate">
                             <div class="product">
                                 <a href="{{ route("product_page", $product->slug) }}" class="img-prod">
-                                    <img class="img-fluid" src="{{ \Illuminate\Support\Facades\Storage::url("public/product_photos/".$product->image->img) }}" alt="BG Corp">
+                                    <img class="img-fluid" src="{{ Illuminate\Support\Facades\Storage::url("public/product_photos/".$product->image->img) }}" alt="BG Corp">
                                     @if($product->discount) <span class="status">{{ $product->discount }}%</span> @endif
                                 </a>
                                 <div class="text py-3 px-3">
@@ -170,14 +170,28 @@
                                                     <span class="price-sale">${{ $product->price*(1-$product->discount/100) }}</span>
                                                 </p>
                                             @else
-                                                <p class="price"><span>${{ $product->price }}</span></p>
+                                                <p class="price"><span>${{ number_format($product->price, 0, " ") }}</span></p>
                                             @endif
                                         </div>
                                     </div>
                                     <hr>
                                     <p class="bottom-area d-flex">
-                                        <a href="#" class="add-to-cart"><span>Add to cart <i class="fas fa-plus"></i></span></a>
-                                        <a href="#" class="ml-auto"><span><i class="far fa-heart"></i></span></a>
+                                        <a href="#" class="add-to-cart add-to-cart-fast cart_but_{{ $product->id }}"><span>Add to cart <i class="fas fa-plus"></i><i class="fas fa-check" style="display: none;"></i></span></a>
+                                        <select name="size">
+                                            <option value="S">S</option>
+                                            <option value="M">M</option>
+                                            <option value="L">L</option>
+                                            <option value="XL">XL</option>
+                                        </select>
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                        <input type="hidden" name="price" value="{{ $product->price }}">
+                                        <span class="ml-auto like_prod">
+                                        @if($product->like)
+                                                <span class="delete_like del_prod_{{ $product->id }}" data-id="{{ $product->like->id }}"><i class="fas fa-heart" style="color: #ff0000;"></i></span>
+                                            @else
+                                                <span class="like_product like_prod_{{ $product->id }}"><i class="far fa-heart"></i></span>
+                                            @endif
+                                    </span>
                                     </p>
                                 </div>
                             </div>

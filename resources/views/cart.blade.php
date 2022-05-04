@@ -14,6 +14,7 @@
         </div>
     </div>
 
+    @if(count($products) > 0)
     <section class="ftco-section ftco-cart">
         <div class="container">
             @if(session("success"))
@@ -34,7 +35,6 @@
                                 <th>Total</th>
                             </tr>
                             </thead>
-                            @if($products)
                                 <tbody>
                                 @php
                                     $full_price = 0;
@@ -79,7 +79,6 @@
                                     @endforeach
                                 @php $total = $full_price - $discount; @endphp
                                 </tbody>
-                            @endif
                         </table>
                     </div>
                 </div>
@@ -112,6 +111,13 @@
             </div>
         </div>
     </section>
+    @else
+        <section class="ftco-section ftco-cart">
+            <div class="container">
+                <h1 style="text-align: center;">Empty</h1>
+            </div>
+        </section>
+    @endif
 
     <section class="ftco-section-parallax">
         <div class="parallax-img d-flex align-items-center">

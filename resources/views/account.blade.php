@@ -12,9 +12,9 @@
                     </div>
                     <div class="navbar-body">
                         <ul>
-                            <li><a href="#"><i class="fas fa-home"></i> Main</a></li>
-                            <li><a href="#"><i class="fas fa-heart"></i> Liked</a></li>
-                            <li><a href="#"><i class="far fa-credit-card"></i> Orders</a></li>
+                            <li><a href="#" data-section="main"><i class="fas fa-home"></i> Main</a></li>
+                            <li><a href="#" data-section="like"><i class="fas fa-heart"></i> Liked</a></li>
+                            <li><a href="#" data-section="orders"><i class="far fa-credit-card"></i> Orders</a></li>
                         </ul>
                     </div>
                 </aside>
@@ -38,12 +38,13 @@
                         </div>
                     </div>
                     <div class="info-content">
-                        <div class="main-content">
+                        @if(session("success"))
+                            <div class="alert alert-success">{{ session("success") }}</div>
+                        @endif
+
+                        <div class="other-content main-content">
                             <h3>Main Information</h3>
 
-                            @if(session("success"))
-                                <div class="alert alert-success">{{ session("success") }}</div>
-                            @endif
                             <div class="sign-up-content">
                                 <form action="{{ route("update_user") }}" method="post" enctype="multipart/form-data">
                                     @csrf
@@ -96,6 +97,41 @@
                                         <input type="submit" name="submit" id="submit" class="submit" value="Update" />
                                     </div>
                                 </form>
+                            </div>
+                        </div>
+                        <div class="other-content like-content">
+                            <h3>liked Products</h3>
+
+                            <div class="product-edit-add">
+                                <div class="product-edit">
+                                    @if($liked)
+                                        @foreach($liked as $like)
+                                            <div class="product-cont">
+                                                <div class="product-block">
+                                                    <div class="left-pr-info">
+                                                        <div class="pr-img"><img src="{{ Illuminate\Support\Facades\Storage::url("public/product_photos/".$like->product->image->img) }}" alt=""></div>
+                                                        <div class="pr-name-desc">
+                                                            <div class="pr-name"><a href="{{ route("product_page", $like->product->slug) }}">{{ $like->product->name }}</a></div>
+                                                            <p class="pr-desc">{{ Illuminate\Support\Str::words($like->product->description, 5) }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="right-pr-info">
+                                                        @if($like->product->discount)
+                                                            <div class="pr-price"><s>{{ $like->product->price }}$</s></div>
+                                                            <div class="pr-discount">-{{ $like->product->discount }}%</div>
+                                                            <div class="pr-price_ds">{{ $like->product->price * (1 - $like->product->discount / 100) }}$</div>
+                                                        @else
+                                                            <div class="pr-price">{{ $like->product->price }}$</div>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <div class="product-adm-btns">
+                                                    <a href="{{ route("delete_product", $like->product->id) }}" class="delete_product_btn">Delete</a>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
