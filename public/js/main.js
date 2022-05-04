@@ -473,6 +473,9 @@
              setTimeout(function () {
                  $(".flying_message").fadeOut(350);
              }, 2000);
+         },
+         error: function(){
+             location.href = "/login"
          }
      });
  });
@@ -496,6 +499,9 @@
              setTimeout(function () {
                  $(".flying_message").fadeOut(350);
              }, 2000);
+         },
+         error: function(){
+             location.href = "/login"
          }
      });
  });
