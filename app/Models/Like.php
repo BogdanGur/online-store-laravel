@@ -10,4 +10,10 @@ class Like extends Model
     use HasFactory;
 
     protected $table = "liked_products";
+
+
+    public function product() {
+
+        return $this->belongsTo(Product::class);
+    }
 }
