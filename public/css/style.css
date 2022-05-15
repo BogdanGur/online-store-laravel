@@ -13231,6 +13231,28 @@ h2 {
 .like-content {
     display: none;
 }
+.sortable_images {
+    display: flex;
+    flex-wrap: wrap;
+}
+.sortable_images .sort_image {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    margin: 5px;
+    padding: 3px;
+    border: 1px solid #242424;
+    background: #ffffff;
+    cursor: grab;
+}
+.sortable_images .sort_image:active {
+    cursor: grabbing;
+}
+.sortable_images .sort_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 @media screen and (max-width: 768px) {
     .wrapper {
