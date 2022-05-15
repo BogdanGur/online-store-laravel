@@ -51,6 +51,7 @@ Route::prefix("admin")->group(function() {
     Route::post("/add-product", "App\Http\Controllers\AdminController@addProduct")->middleware("auth:admin")->name("add_product");
     Route::post("/update-product/{id}", "App\Http\Controllers\AdminController@updateProduct")->middleware("auth:admin")->name("update_product");
     Route::get("/delete-product/{id}", "App\Http\Controllers\AdminController@deleteProduct")->middleware("auth:admin")->name("delete_product");
+    Route::post("/sorting-photos", "App\Http\Controllers\AdminController@sortImages")->middleware("auth:admin")->name("sort_images");
 
     Route::post("/update-site-info", "App\Http\Controllers\AdminController@updateSiteInfo")->middleware("auth:admin")->name("update_site_info");
 });
