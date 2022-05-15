@@ -56,10 +56,10 @@
                                                 <td class="price">
                                                     <p class="real-price" data-prs="{{ $product->product->price }}"><s>${{ $product->product->price }}</s></p>
                                                     <p class="discount-num" data-dsc="{{ $product->product->discount }}">-{{ $product->product->discount }}%</p>
-                                                    <p class="discount-price" data-dscprs="{{ $product->product->price*(1-$product->product->discount/100) }}">${{ $product->product->price*(1-$product->product->discount/100) }}</p>
+                                                    <p class="discount-price" data-dscprs="{{ $product->product->discount_price }}">${{ $product->product->discount_price }}</p>
                                                 </td>
 
-                                                @php $discount += $product->product->price - ($product->product->price*(1-$product->product->discount/100)); @endphp
+                                                @php $discount += $product->product->price * $product->quantity - ($product->product->price * $product->quantity *(1-$product->product->discount/100)); @endphp
                                             @else
                                                 <td class="price"><p class="real-price" data-prs="{{ $product->product->price }}">${{ $product->product->price }}</p></td>
                                             @endif
@@ -67,14 +67,10 @@
                                             <td class="quantity">
                                                 <div class="input-group mb-3">
                                                     <input type="text" name="quantity" class="quantity form-control input-number"
-                                                           value="{{ $product->quantity }}" min="1" max="100" data-pid="{{ $product->id }}" data-price="{{ $product->product->price }}" @if($product->product->discount) data-discount="{{ $product->product->discount }}" @endif>
+                                                           value="{{ $product->quantity }}" min="1" max="100" data-pid="{{ $product->id }}" data-price="{{ $product->product->discount_price }}">
                                                 </div>
                                             </td>
-                                            @if($product->product->discount)
-                                                <td class="total">${{ $product->total*(1-$product->product->discount/100) }}</td>
-                                            @else
-                                                <td class="total">${{ number_format($product->total, 0, "", " ") }}</td>
-                                            @endif
+                                            <td class="total">${{ number_format($product->total, 0, "", " ") }}</td>
                                         </tr>
                                     @endforeach
                                 @php $total = $full_price - $discount; @endphp

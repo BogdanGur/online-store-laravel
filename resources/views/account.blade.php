@@ -126,7 +126,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-adm-btns">
-                                                    <a href="{{ route("delete_product", $like->product->id) }}" class="delete_product_btn">Delete</a>
+                                                    <a href="{{ route("delete_like", $like->product->id) }}" class="delete_product_btn">Delete</a>
                                                 </div>
                                             </div>
                                         @endforeach

@@ -431,7 +431,6 @@
      var product_id = $(this).data("pid");
      var quantity = $(this).val();
      var price = $(this).data("price");
-     var discount = $(this).data("discount");
 
      $.ajax({
          url: "/cart/update-product",

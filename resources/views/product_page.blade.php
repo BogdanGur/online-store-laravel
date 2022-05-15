@@ -37,7 +37,7 @@
                     @if($product->discount)
                         <p class="price">
                             <span class="mr-2 price-dc">${{ number_format($product->price, 0, " ") }}</span>
-                            <span class="price-sale">${{ number_format($product->price*(1-$product->discount/100), 0, " ") }}</span>
+                            <span class="price-sale">${{ number_format($product->discount_price, 0, " ") }}</span>
                         </p>
                     @else
                         <p class="price"><span>${{ number_format($product->price, 0, " ") }}</span></p>

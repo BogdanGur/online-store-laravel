@@ -37,6 +37,7 @@ Route::get("/product/{slug}", "App\Http\Controllers\ProductPageController@index"
 Route::prefix("account")->middleware(['auth'])->group(function() {
     Route::get('/', "App\Http\Controllers\AccountController@index")->name("account");
     Route::post('/update-user', "App\Http\Controllers\AccountController@updateUser")->name("update_user");
+    Route::post('/delete-like/{id}', "App\Http\Controllers\AccountController@deleteLike")->name("delete_like");
 });
 
 #Admin
