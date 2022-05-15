@@ -43,4 +43,10 @@ class AccountController extends Controller
 
         return back()->with("success", "Данные успешно обновлены");
     }
+
+    public function deleteLike($id) {
+        Like::find($id)->delete();
+
+        return back()->with(["success" => "Товар был удален из избранных"]);
+    }
 }

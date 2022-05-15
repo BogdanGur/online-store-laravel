@@ -7,9 +7,11 @@ use App\Http\Requests\AdminUpdateRequest;
 use App\Http\Requests\ProductRequest;
 use App\Http\Requests\SiteInfoRequest;
 use App\Models\Admin;
+use App\Models\Cart;
 use App\Models\Images;
 use App\Models\Product;
 use App\Models\Site;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -86,8 +88,8 @@ class AdminController extends Controller
         $product->description = $request->description;
         $product->price = $request->price;
         $product->discount = $request->discount;
+        $product->discount_price = $request->price*(1-$request->discount/100);
         $product->variation = $request->size;
-
         $product->save();
 
         if($request->hasFile("image")) {
@@ -110,16 +112,22 @@ class AdminController extends Controller
 
     public function updateProduct(ProductRequest $request, $id) {
         $product = Product::find($id);
-
+        $cart = Cart::where("product_id", $id)->first();
 
         $product->slug = Str::slug($request->name);
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
         $product->discount = $request->discount;
+        $product->discount_price = $request->price*(1-$request->discount/100);
         $product->variation = $request->size;
+        $cart->total = $cart->quantity * $product->discount_price;
 
         $product->save();
+        $cart->save();
+
+        $cart->total = $cart->quantity * $product->discount_price;
+        $cart->save();
 
         if($request->hasFile("image")) {
 
