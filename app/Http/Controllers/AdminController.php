@@ -167,6 +167,22 @@ class AdminController extends Controller
         return redirect()->route("admin")->with("success", "Продукт успешно удален");
     }
 
+    public function sortImages(Request $request) {
+
+        $i = 1;
+        foreach ($request->sorting_result as $sort) {
+            $itemId = (int) str_replace("sort_", "", $sort);
+
+            $image = Images::find($itemId);
+            $image->sorting = $i;
+            $image->save();
+
+            $i++;
+        }
+
+        return response()->json(["success" => "Changed Successful"]);
+    }
+
     public function updateSiteInfo(SiteInfoRequest $request) {
         $site = Site::find(1);
 
