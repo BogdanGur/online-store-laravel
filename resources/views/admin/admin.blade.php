@@ -4,10 +4,12 @@
     <title>@yield("title")</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="{{ asset("css/open-iconic-bootstrap.min.css") }}">
     <link rel="stylesheet" href="{{ asset("css/animate.css") }}">
 
@@ -231,6 +233,14 @@
                                                         <input type="submit" name="submit" class="submit" value="Update" />
                                                     </div>
                                                 </form>
+                                                <h5>Image Sortable: </h5>
+                                                <div class="sortable_images">
+                                                    @foreach($product->all_images as $img)
+                                                        <div class="sort_image" data-sort="{{ $img->sorting }}" id="sort_{{ $img->id }}">
+                                                            <img src="{{ \Illuminate\Support\Facades\Storage::url("public/product_photos/".$img->img) }}" alt="">
+                                                        </div>
+                                                    @endforeach
+                                                </div>
                                             </div>
                                         </div>
                                     @endforeach
@@ -435,10 +445,11 @@
             </div>
         </div>
     </div>
-    <section>
+    </section>
 
         <script src="{{ asset("js/jquery.min.js") }}"></script>
         <script src="{{ asset("js/jquery-migrate-3.0.1.min.js") }}"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
         <script src="{{ asset("js/nicEdit.js") }}"></script>
         <script src="{{ asset("js/popper.min.js") }}"></script>
         <script src="{{ asset("js/bootstrap.min.js") }}"></script>
@@ -451,6 +462,7 @@
         <script src="{{ asset("js/jquery.animateNumber.min.js") }}"></script>
         <script src="{{ asset("js/bootstrap-datepicker.js") }}"></script>
         <script src="{{ asset("js/scrollax.min.js") }}"></script>
+        <script src="{{ asset("js/jquery-ui.min.js") }}"></script>
         <script src="{{ asset("js/main.js") }}"></script>
         <script src="https://kit.fontawesome.com/06c89e9946.js" crossorigin="anonymous"></script>
 </body>
