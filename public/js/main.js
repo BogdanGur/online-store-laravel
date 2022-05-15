@@ -505,4 +505,21 @@
      });
  });
 
+ $(".sortable_images").sortable();
+ $(".sortable_images").on("sortupdate", function() {
+     sorting_result = $(this).sortable("toArray");
+
+     $.ajax({
+         url: "/admin/sorting-photos",
+         type: "POST",
+         data: ({
+             sorting_result : sorting_result
+         }),
+         success: function(result){
+            console.log(result["success"]);
+         }
+     });
+ });
+
+
 
