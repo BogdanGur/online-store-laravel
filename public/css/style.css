@@ -11160,7 +11160,6 @@ h1, h2, h3, h4, h5,
 .table .thead-primary {
     background: rgba(0, 0, 0, 0.03);
 }
-
 .table .thead-primary tr th {
     padding: 20px 10px;
     color: #000000 !important;
@@ -13252,6 +13251,14 @@ h2 {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+.cancel_order {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+}
+.cancel_order:hover {
+    color: #721c2491;
 }
 
 @media screen and (max-width: 768px) {

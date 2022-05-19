@@ -27,8 +27,8 @@
                             <thead class="thead-primary">
                             <tr class="text-center">
                                 <th>&nbsp;</th>
-                                <th>&nbsp;</th>
-                                <th>Product</th>
+                                <th>Photo</th>
+                                <th>Name</th>
                                 <th>Price</th>
                                 <th>Size</th>
                                 <th>Quantity</th>
@@ -101,8 +101,13 @@
                             <span>${{ $total }}</span>
                         </p>
                     </div>
-                    <p class="text-center"><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to
+                    <p class="text-center"><a href="{{ route("add_checkout") }}/?price={{ $total }}&subtotal={{ $full_price }}&discount={{ $discount }}" class="btn btn-primary py-3 px-4">Proceed to
                             Checkout</a></p>
+
+                    <br>
+                    @if(session("error"))
+                        <div class="alert alert-danger">{{ session("error") }}</div>
+                    @endif
                 </div>
             </div>
         </div>

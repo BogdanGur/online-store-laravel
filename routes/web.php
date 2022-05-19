@@ -28,6 +28,14 @@ Route::prefix("cart")->group(function () {
     Route::post("/fast-add-product", "App\Http\Controllers\CartController@fastAddProduct")->middleware("auth")->name("fast_add_cart");
     Route::post("/update-product", "App\Http\Controllers\CartController@updateProduct")->middleware("auth")->name("update_cart");
     Route::get("/remove-product/{id}", "App\Http\Controllers\CartController@removeProduct")->middleware("auth")->name("remove_cart");
+
+    Route::get("/add-checkout", "App\Http\Controllers\CartController@addCheckout")->middleware("auth")->name("add_checkout");
+});
+
+#Checkout
+Route::prefix("checkout")->group(function () {
+    Route::get("/", "App\Http\Controllers\CheckoutController@index")->name("checkout");
+    Route::get("/delete-order/{id}", "App\Http\Controllers\CheckoutController@delete_order")->name("delete_order");
 });
 
 #Product Page
@@ -55,5 +63,6 @@ Route::prefix("admin")->group(function() {
 
     Route::post("/update-site-info", "App\Http\Controllers\AdminController@updateSiteInfo")->middleware("auth:admin")->name("update_site_info");
 });
+
 
 require __DIR__.'/auth.php';

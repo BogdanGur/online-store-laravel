@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CartRequest;
 use App\Models\Cart;
+use App\Models\Order;
+use App\Models\OrderProduct;
 use App\Models\Product;
 use App\Models\Site;
+use Illuminate\Database\Eloquent\Model;
+use \Illuminate\Support\Facades\URL;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -57,5 +61,48 @@ class CartController extends Controller
         Cart::find($id)->delete();
 
         return back()->with("success", "Товар удален с корзины");
+    }
+
+    public function addCheckout() {
+        $all_cart = Cart::where("user_id", Auth::id())->get();
+        $is_order = Order::where("user_id", Auth::id())->first();
+
+        if($is_order) {
+            $order_prod = OrderProduct::where("order_id", $is_order->id)->get();
+
+            foreach ($order_prod as $prod) {
+                OrderProduct::find($prod->id)->delete();
+            }
+            Order::find($is_order->id)->delete();
+        }
+
+        $order = new Order();
+
+        $tprice = \request("price");
+        $subtotal = \request("subtotal");
+        $tdiscount = \request("discount");
+
+        if(count($all_cart) > 0) {
+            $order->user_id = Auth::id();
+            $order->subtotal_price = $subtotal;
+            $order->total_price = $tprice;
+            $order->total_discount = $tdiscount;
+            $order->save();
+
+            foreach($all_cart as $cart) {
+                $op = new OrderProduct();
+
+                $op->order_id = $order->id;
+                $op->product_id = $cart->product_id;
+                $op->size = $cart->size;
+                $op->quantity = $cart->quantity;
+                $op->price = $cart->total;
+
+                $op->save();
+            }
+            return redirect()->route("checkout");
+        }
+
+        return redirect()->route("checkout");
     }
 }
