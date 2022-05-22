@@ -50,6 +50,7 @@
                         <li><a href="#" data-section="main">Main</a></li>
                         <li><a href="#" data-section="product">Products</a></li>
                         <li><a href="#" data-section="site">Site</a></li>
+                        <li><a href="#" data-section="orders">Orders</a></li>
                     </ul>
                     <br>
                 </div>
@@ -320,126 +321,193 @@
                             </div>
                         </div>
                     </div>
-                        <div class="other-content site-content" style="display: none;">
-                            <h3>Site Information</h3>
+                    <div class="other-content site-content" style="display: none;">
+                        <h3>Site Information</h3>
 
-                            <div class="sign-up-content">
-                                <form action="{{ route("update_site_info") }}" method="post" enctype="multipart/form-data">
-                                    @csrf
-                                    <h3>Home Section</h3>
+                        <div class="sign-up-content">
+                            <form action="{{ route("update_site_info") }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <h3>Home Section</h3>
 
-                                    <div class="form-textbox">
-                                        <label for="photo">Main background</label>
-                                        <input type="file" name="main_bg">
-                                    </div>
-                                    @if($errors->has("main_bg"))
-                                        <div class="alert alert-danger">{{ $errors->first("main_bg") }}</div>
-                                    @endif
+                                <div class="form-textbox">
+                                    <label for="photo">Main background</label>
+                                    <input type="file" name="main_bg">
+                                </div>
+                                @if($errors->has("main_bg"))
+                                    <div class="alert alert-danger">{{ $errors->first("main_bg") }}</div>
+                                @endif
 
-                                    <div class="form-textbox">
-                                        <label for="photo">Page background</label>
-                                        <input type="file" name="page_bg">
-                                    </div>
-                                    @if($errors->has("page_bg"))
-                                        <div class="alert alert-danger">{{ $errors->first("page_bg") }}</div>
-                                    @endif
+                                <div class="form-textbox">
+                                    <label for="photo">Page background</label>
+                                    <input type="file" name="page_bg">
+                                </div>
+                                @if($errors->has("page_bg"))
+                                    <div class="alert alert-danger">{{ $errors->first("page_bg") }}</div>
+                                @endif
 
-                                    <div class="form-textbox">
-                                        <label for="name">Home title</label>
-                                        <input type="text" name="home_title" value="{{ $site->home_title }}">
-                                    </div>
-                                    @if($errors->has("home_title"))
-                                        <div class="alert alert-danger">{{ $errors->first("home_title") }}</div>
-                                    @endif
+                                <div class="form-textbox">
+                                    <label for="name">Home title</label>
+                                    <input type="text" name="home_title" value="{{ $site->home_title }}">
+                                </div>
+                                @if($errors->has("home_title"))
+                                    <div class="alert alert-danger">{{ $errors->first("home_title") }}</div>
+                                @endif
 
-                                    <div class="form-textbox">
-                                        <label for="surname">Home subtitle</label>
-                                        <input type="text" name="home_subtitle" value="{{ $site->home_subtitle }}">
-                                    </div>
-                                    @if($errors->has("home_subtitle"))
-                                        <div class="alert alert-danger">{{ $errors->first("home_subtitle") }}</div>
-                                    @endif
+                                <div class="form-textbox">
+                                    <label for="surname">Home subtitle</label>
+                                    <input type="text" name="home_subtitle" value="{{ $site->home_subtitle }}">
+                                </div>
+                                @if($errors->has("home_subtitle"))
+                                    <div class="alert alert-danger">{{ $errors->first("home_subtitle") }}</div>
+                                @endif
 
-                                    <div class="form-textbox">
-                                        <label for="name">Home mini about</label>
-                                        <input type="text" name="home_mini_about" value="{{ $site->home_mini_about }}">
-                                    </div>
-                                    @if($errors->has("home_mini_about"))
-                                        <div class="alert alert-danger">{{ $errors->first("home_mini_about") }}</div>
-                                    @endif
+                                <div class="form-textbox">
+                                    <label for="name">Home mini about</label>
+                                    <input type="text" name="home_mini_about" value="{{ $site->home_mini_about }}">
+                                </div>
+                                @if($errors->has("home_mini_about"))
+                                    <div class="alert alert-danger">{{ $errors->first("home_mini_about") }}</div>
+                                @endif
 
-                                    <div class="form-textbox">
-                                        <label for="name">Home since</label>
-                                        <input type="text" name="home_since" value="{{ $site->home_since }}">
-                                    </div>
-                                    @if($errors->has("home_since"))
-                                        <div class="alert alert-danger">{{ $errors->first("home_since") }}</div>
-                                    @endif
+                                <div class="form-textbox">
+                                    <label for="name">Home since</label>
+                                    <input type="text" name="home_since" value="{{ $site->home_since }}">
+                                </div>
+                                @if($errors->has("home_since"))
+                                    <div class="alert alert-danger">{{ $errors->first("home_since") }}</div>
+                                @endif
 
-                                    <div class="form-textbox">
-                                        <label for="surname">Banner</label>
-                                        <input type="text" name="banner" value="{{ $site->banner }}">
-                                    </div>
-                                    @if($errors->has("banner"))
-                                        <div class="alert alert-danger">{{ $errors->first("banner") }}</div>
-                                    @endif
+                                <div class="form-textbox">
+                                    <label for="surname">Banner</label>
+                                    <input type="text" name="banner" value="{{ $site->banner }}">
+                                </div>
+                                @if($errors->has("banner"))
+                                    <div class="alert alert-danger">{{ $errors->first("banner") }}</div>
+                                @endif
 
-                                    <h3>About Section</h3>
+                                <h3>About Section</h3>
 
-                                    <div class="form-textbox">
-                                        <label for="photo">Photo</label>
-                                        <input type="file" name="about_photo">
-                                    </div>
-                                    @if($errors->has("about_photo"))
-                                        <div class="alert alert-danger">{{ $errors->first("about_photo") }}</div>
-                                    @endif
+                                <div class="form-textbox">
+                                    <label for="photo">Photo</label>
+                                    <input type="file" name="about_photo">
+                                </div>
+                                @if($errors->has("about_photo"))
+                                    <div class="alert alert-danger">{{ $errors->first("about_photo") }}</div>
+                                @endif
 
-                                    <div class="form-textbox">
-                                        <label for="surname">About title</label>
-                                        <input type="text" name="about_title" value="{{ $site->about_title }}">
-                                    </div>
-                                    @if($errors->has("about_title"))
-                                        <div class="alert alert-danger">{{ $errors->first("about_title") }}</div>
-                                    @endif
+                                <div class="form-textbox">
+                                    <label for="surname">About title</label>
+                                    <input type="text" name="about_title" value="{{ $site->about_title }}">
+                                </div>
+                                @if($errors->has("about_title"))
+                                    <div class="alert alert-danger">{{ $errors->first("about_title") }}</div>
+                                @endif
 
-                                    <div class="form-textbox">
-                                        <textarea name="about_content" placeholder="About content">{{ $site->about_content }}</textarea>
-                                    </div>
-                                    @if($errors->has("about_content"))
-                                        <div class="alert alert-danger">{{ $errors->first("about_content") }}</div>
-                                    @endif
+                                <div class="form-textbox">
+                                    <textarea name="about_content" placeholder="About content">{{ $site->about_content }}</textarea>
+                                </div>
+                                @if($errors->has("about_content"))
+                                    <div class="alert alert-danger">{{ $errors->first("about_content") }}</div>
+                                @endif
 
-                                    <h3>Contact</h3>
+                                <h3>Contact</h3>
 
-                                    <div class="form-textbox">
-                                        <label for="surname">Location</label>
-                                        <input type="text" name="contact_location" value="{{ $site->contact_location }}">
-                                    </div>
-                                    @if($errors->has("contact_location"))
-                                        <div class="alert alert-danger">{{ $errors->first("contact_location") }}</div>
-                                    @endif
+                                <div class="form-textbox">
+                                    <label for="surname">Location</label>
+                                    <input type="text" name="contact_location" value="{{ $site->contact_location }}">
+                                </div>
+                                @if($errors->has("contact_location"))
+                                    <div class="alert alert-danger">{{ $errors->first("contact_location") }}</div>
+                                @endif
 
-                                    <div class="form-textbox">
-                                        <label for="surname">Phone</label>
-                                        <input type="tel" name="contact_phone" value="{{ $site->contact_phone }}">
-                                    </div>
-                                    @if($errors->has("contact_phone"))
-                                        <div class="alert alert-danger">{{ $errors->first("contact_phone") }}</div>
-                                    @endif
+                                <div class="form-textbox">
+                                    <label for="surname">Phone</label>
+                                    <input type="tel" name="contact_phone" value="{{ $site->contact_phone }}">
+                                </div>
+                                @if($errors->has("contact_phone"))
+                                    <div class="alert alert-danger">{{ $errors->first("contact_phone") }}</div>
+                                @endif
 
-                                    <div class="form-textbox">
-                                        <label for="surname">Email</label>
-                                        <input type="email" name="contact_email" value="{{ $site->contact_email }}">
-                                    </div>
-                                    @if($errors->has("contact_email"))
-                                        <div class="alert alert-danger">{{ $errors->first("contact_email") }}</div>
-                                    @endif
+                                <div class="form-textbox">
+                                    <label for="surname">Email</label>
+                                    <input type="email" name="contact_email" value="{{ $site->contact_email }}">
+                                </div>
+                                @if($errors->has("contact_email"))
+                                    <div class="alert alert-danger">{{ $errors->first("contact_email") }}</div>
+                                @endif
 
-                                    <div class="form-textbox">
-                                        <input type="submit" name="submit" class="submit" value="Update" />
-                                    </div>
-                                </form>
-                            </div>
+                                <div class="form-textbox">
+                                    <input type="submit" name="submit" class="submit" value="Update" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                        <div class="other-content orders-content" style="display: none;">
+                            <h3>Orders</h3>
+
+                            @if(count($orders) > 0)
+                                <div class="orders-block">
+                                    @foreach($orders as $order)
+                                        <div class="order-block">
+                                            <div class="info-order-block">
+                                                <div class="order-ps">
+                                                    <div class="order-id">{{ $order->id }}</div>
+                                                    @if($order->total_discount > 0)
+                                                        <div class="order-price" style="margin-right: 0;"><s>${{ $order->subtotal_price }}</s></div>
+                                                        <div class="order-price" style="color: darkred; margin-right: 5px; margin-left: 3px;"><sup>${{ $order->total_discount }}</sup></div>
+                                                        <i class="fas fa-arrow-right"></i>
+                                                        <div class="order-price">${{ $order->total_price }}</div>
+                                                    @else
+                                                        <div class="order-price">${{ $order->total_price }}</div>
+                                                    @endif
+                                                    @if($order->status == "paid")
+                                                        <div class="order-status status-paid">Paid</div>
+                                                    @elseif($order->status == "process")
+                                                        <div class="order-status status-process">Process</div>
+                                                    @else
+                                                        <div class="order-status status-declined">Declined</div>
+                                                    @endif
+                                                </div>
+                                                @if($order->status == "process")
+                                                    <a href="{{ route("checkout") }}" class="order-to-btn"><i class="fas fa-arrow-right"></i></a>
+                                                @endif
+                                                <div class="order-date">{{ date("d/m/Y", strtotime($order->updated_at)) }}</div>
+                                            </div>
+                                            <div class="order-products-block">
+                                                @foreach($order->prod as $prod)
+                                                    <div class="order-product">
+                                                        <div class="o-img_name">
+                                                            <div class="o-img"><img src="{{ \Illuminate\Support\Facades\Storage::url("public/product_photos/".$prod->product->image->img)  }}" alt=""></div>
+                                                            <div class="o-name">{{ $prod->product->name }}</div>
+                                                        </div>
+                                                        <div class="o-price-quantity-size">
+                                                            <div class="o-price">${{ $prod->price }}</div>
+                                                            <div class="o-quantity">{{ $prod->quantity }}</div>
+                                                            <div class="o-size">{{ $prod->size }}</div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                                <div class="order-shipping-info">
+                                                    <h3>Shipping</h3>
+                                                    <ul>
+{{--                                                        @foreach(json_decode($order->shipping) as $ship)--}}
+                                                        <li><strong>Name:</strong> {{ json_decode($order->shipping)->first_name ?? "-" }}</li>
+                                                        <li><strong>Surname:</strong> {{ json_decode($order->shipping)->last_name ?? "-" }}</li>
+                                                        <li><strong>Country:</strong> {{ json_decode($order->shipping)->country ?? "-" }}</li>
+                                                        <li><strong>City:</strong> {{ json_decode($order->shipping)->city ?? "-" }}</li>
+                                                        <li><strong>Street Address:</strong> {{ json_decode($order->shipping)->street_address ?? "-" }}</li>
+                                                        <li><strong>Appartment:</strong> {{ json_decode($order->shipping)->appartment ?? "-" }}</li>
+                                                        <li><strong>Zip Code:</strong> {{ json_decode($order->shipping)->zip_code ?? "-" }}</li>
+                                                        <li><strong>Phone:</strong> {{ json_decode($order->shipping)->phone ?? "-" }}</li>
+{{--                                                        @endforeach--}}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="order-products-btn"><i class="fas fa-angle-down"></i><i class="fas fa-angle-up" style="display: none;"></i></div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
                         </div>
                 </div>
             </div>

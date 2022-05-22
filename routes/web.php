@@ -66,5 +66,7 @@ Route::prefix("admin")->group(function() {
     Route::post("/update-site-info", "App\Http\Controllers\AdminController@updateSiteInfo")->middleware("auth:admin")->name("update_site_info");
 });
 
+Route::get("/send-mail", "App\Http\Controllers\MailController@send")->name("mail.send");
+
 
 require __DIR__.'/auth.php';

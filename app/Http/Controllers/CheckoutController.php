@@ -51,14 +51,14 @@ class CheckoutController extends Controller
         );
 
         $ship = [
-            "First Name" => $request->firstName,
-            "Last Name" => $request->lastName,
-            "Country" => $request->country,
-            "City" => $request->city,
-            "Street Address" => $request->streetAddress,
-            "Appartment" => $request->appartment,
-            "Zip Code" => $request->zipCode,
-            "Phone" => $request->phone,
+            "first_name" => $request->firstName,
+            "last_name" => $request->lastName,
+            "country" => $request->country,
+            "city" => $request->city,
+            "street_address" => $request->streetAddress,
+            "appartment" => $request->appartment,
+            "zip_code" => $request->zipCode,
+            "phone" => $request->phone,
         ];
 
         $order = Order::find($request->orderId);

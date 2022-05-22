@@ -13416,14 +13416,16 @@ h2 {
     font-weight: 900;
     font-size: 13px;
 }
-.orders-block .order-block .order-products-block .order-product .o-price-quantity-size .o-price {
+.orders-block .order-block .order-products-block .order-shipping-info {
 
 }
-.orders-block .order-block .order-products-block .order-product .o-price-quantity-size .o-quantity {
-
+.orders-block .order-block .order-products-block .order-shipping-info ul {
+    padding-left: 15px;
 }
-.orders-block .order-block .order-products-block .order-product .o-price-quantity-size .o-size {
-
+.orders-block .order-block .order-products-block .order-shipping-info ul li {
+    list-style-type: none;
+    color: #242424;
+    font-size: 13px;
 }
 
 @media screen and (max-width: 768px) {

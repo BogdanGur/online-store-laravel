@@ -3,8 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
+use App\Http\Resources\ProductResource;
+use App\Models\Images;
+use App\Models\Like;
 use App\Models\Product;
+use \Illuminate\Http\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Psy\Util\Str;
 
 class ProductController extends Controller
 {
@@ -17,11 +24,7 @@ class ProductController extends Controller
     {
         $prod = Product::all();
 
-        return response()->json([
-            "status" => true,
-            "message" => "all Products",
-            "pdoructs" => $prod
-        ], 200);
+        return ProductResource::collection($prod);
     }
 
     /**
@@ -30,9 +33,16 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+        $new_product = new Product();
+        $new_product->slug = \Illuminate\Support\Str::slug($request->name);
+        $new_product->name = $request->name;
+        $new_product->description = $request->description;
+        $new_product->price = $request->price;
+        $new_product->save();
+
+        return new ProductResource(Product::findOrFail($new_product->id));
     }
 
     /**
@@ -43,7 +53,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        return new ProductResource(Product::findOrFail($id));
     }
 
     /**
@@ -53,9 +63,16 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->save();
+
+        return new ProductResource($product);
     }
 
     /**
@@ -66,6 +83,16 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $images = Images::select("id", "img")->where("product_id", $id)->get();
+        Like::where("product_id", $id)->delete();
+
+        foreach($images as $image) {
+            Storage::delete("public/product_photos/".$image["img"]);
+            Images::find($image["id"])->delete();
+        }
+
+        Product::find($id)->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }

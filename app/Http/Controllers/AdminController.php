@@ -9,6 +9,8 @@ use App\Http\Requests\SiteInfoRequest;
 use App\Models\Admin;
 use App\Models\Cart;
 use App\Models\Images;
+use App\Models\Like;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Site;
 use App\Models\User;
@@ -25,7 +27,12 @@ class AdminController extends Controller
     public function index() {
 
         if(Auth::guard("admin")->check()) {
-            return view("admin.admin", ["admin" => Admin::find(Auth::guard("admin")->id()), "products" => Product::all(), "site" => Site::find(1)]);
+            return view("admin.admin", [
+                "admin" => Admin::find(Auth::guard("admin")->id()),
+                "products" => Product::all(),
+                "site" => Site::find(1),
+                "orders" => Order::all()
+            ]);
         }
         return redirect()->route("show_login");
     }
@@ -156,6 +163,7 @@ class AdminController extends Controller
 
     public function deleteProduct($id) {
         $images = Images::select("id", "img")->where("product_id", $id)->get();
+        Like::where("product_id", $id)->delete();
 
         foreach($images as $image) {
             Storage::delete("public/product_photos/".$image["img"]);
