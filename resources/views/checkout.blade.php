@@ -19,73 +19,75 @@
             <div class="row justify-content-center">
                 <div class="col-xl-8 ftco-animate">
                     <form action="#" class="billing-form bg-light p-3 p-md-5">
-                        <h3 class="mb-4 billing-heading">Billing Details</h3>
+                        <h3 class="mb-4 billing-heading">Shipping Details</h3>
                         <div class="row align-items-end">
                             <div class="col-md-6">
+                                <div class="alert alert-danger first_name-error" style="display: none;"></div>
                                 <div class="form-group">
-                                    <label for="firstname">Firt Name</label>
-                                    <input type="text" class="form-control" placeholder="">
+                                    <label for="firstname">Firt Name *</label>
+                                    <input type="text" class="form-control first_name" name="first_name" placeholder="">
                                 </div>
                             </div>
                             <div class="col-md-6">
+                                <div class="alert alert-danger last_name-error" style="display: none;"></div>
                                 <div class="form-group">
-                                    <label for="lastname">Last Name</label>
-                                    <input type="text" class="form-control" placeholder="">
+                                    <label for="lastname">Last Name *</label>
+                                    <input type="text" class="form-control last_name" name="last_name" placeholder="">
                                 </div>
                             </div>
                             <div class="w-100"></div>
                             <div class="col-md-12">
+                                <div class="alert alert-danger country-error" style="display: none;"></div>
                                 <div class="form-group">
-                                    <label for="country">State / Country</label>
+                                    <label for="country">State / Country *</label>
                                     <div class="select-wrap">
                                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                        <select name="" id="" class="form-control">
-                                            <option value="">France</option>
-                                            <option value="">Italy</option>
-                                            <option value="">Philippines</option>
-                                            <option value="">South Korea</option>
-                                            <option value="">Hongkong</option>
-                                            <option value="">Japan</option>
+                                        <select name="country" id="" class="form-control country">
+                                            <option value="France">France</option>
+                                            <option value="Ukraine">Ukraine</option>
+                                            <option value="Italy">Italy</option>
+                                            <option value="Philippines">Philippines</option>
+                                            <option value="South Korea">South Korea</option>
+                                            <option value="Hongkong">Hongkong</option>
+                                            <option value="Japan">Japan</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="w-100"></div>
                             <div class="col-md-6">
+                                <div class="alert alert-danger street_address-error" style="display: none;"></div>
                                 <div class="form-group">
-                                    <label for="streetaddress">Street Address</label>
-                                    <input type="text" class="form-control" placeholder="House number and street name">
+                                    <label for="streetaddress">Street Address *</label>
+                                    <input type="text" class="form-control street_address" name="street_address" placeholder="House number and street name">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Appartment, suite, unit etc: (optional)">
+                                    <input type="text" class="form-control appartment" name="appartment" placeholder="Appartment, suite, unit etc: (optional)">
                                 </div>
                             </div>
                             <div class="w-100"></div>
                             <div class="col-md-6">
+                                <div class="alert alert-danger city-error" style="display: none;"></div>
                                 <div class="form-group">
-                                    <label for="towncity">Town / City</label>
-                                    <input type="text" class="form-control" placeholder="">
+                                    <label for="towncity">Town / City *</label>
+                                    <input type="text" class="form-control city" name="city" placeholder="">
                                 </div>
                             </div>
                             <div class="col-md-6">
+                                <div class="alert alert-danger zip_code-error" style="display: none;"></div>
                                 <div class="form-group">
                                     <label for="postcodezip">Postcode / ZIP *</label>
-                                    <input type="text" class="form-control" placeholder="">
+                                    <input type="text" class="form-control zip_code" name="zip_code" placeholder="">
                                 </div>
                             </div>
                             <div class="w-100"></div>
                             <div class="col-md-6">
+                                <div class="alert alert-danger phone-error" style="display: none;"></div>
                                 <div class="form-group">
-                                    <label for="phone">Phone</label>
-                                    <input type="text" class="form-control" placeholder="">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="emailaddress">Email Address</label>
-                                    <input type="text" class="form-control" placeholder="">
+                                    <label for="phone">Phone *</label>
+                                    <input type="text" class="form-control phone" name="phone" placeholder="">
                                 </div>
                             </div>
                             <div class="w-100"></div>
@@ -146,13 +148,23 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 payment-main">
+                            <div class="payment-load">
+                                <div class="lds-dual-ring"></div>
+                            </div>
                             <div class="cart-detail bg-light p-3 p-md-4">
                                 <h3 class="billing-heading mb-4">Payment Method</h3>
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <div class="radio">
-                                            <label><input type="radio" name="optradio" class="mr-2"> Direct Bank Tranfer</label>
+                                            <label><input type="radio" name="optradio" class="mr-2 card-payment-radio"> Direct Bank Tranfer</label>
+                                        </div>
+                                        <div class="payment-block card-payment-block">
+                                            <input type="hidden" id="order-id" value="{{ $order->id }}">
+                                            <input type="hidden" id="order-price" value="{{ $order->total_price }}">
+
+                                            <!-- Stripe Elements Placeholder -->
+                                            <div id="card-element"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -170,7 +182,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <p><a href="#"class="btn btn-primary py-3 px-4">Place an order</a></p>
+                                <p><button class="btn btn-primary py-3 px-4" id="card-button">Place an order</button></p>
+                                <div class="payment_status">
+
+                                </div>
                             </div>
                         </div>
                     </div>

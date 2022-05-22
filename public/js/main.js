@@ -505,21 +505,142 @@
      });
  });
 
- $(".sortable_images").sortable();
- $(".sortable_images").on("sortupdate", function() {
-     sorting_result = $(this).sortable("toArray");
+ if(window.location.pathname == "/admin") {
+     $(".sortable_images").sortable();
+     $(".sortable_images").on("sortupdate", function() {
+         sorting_result = $(this).sortable("toArray");
 
-     $.ajax({
-         url: "/admin/sorting-photos",
-         type: "POST",
-         data: ({
-             sorting_result : sorting_result
-         }),
-         success: function(result){
-            console.log(result["success"]);
+         $.ajax({
+             url: "/admin/sorting-photos",
+             type: "POST",
+             data: ({
+                 sorting_result : sorting_result
+             }),
+             success: function(result){
+                console.log(result["success"]);
+             }
+         });
+     });
+ }
+
+ if(window.location.pathname == "/checkout") {
+     const stripe = Stripe('pk_test_51L1crCGz7p6Rzg03FPaBQifHuIkLHZ6pKpNt6o6FckDKgACskj5b2SqDA00cjQBATfw7O4JQSjNco6jLKjvrWVi400L4JVXiev');
+
+     const elements = stripe.elements();
+     const cardElement = elements.create('card', {
+         hidePostalCode: true,
+         style: {
+             base: {
+                 iconColor: '#666EE8',
+                 color: '#31325F',
+                 lineHeight: '40px',
+                 fontWeight: 300,
+                 fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                 fontSize: '15px',
+
+                 '::placeholder': {
+                     color: '#242424',
+                 },
+             },
          }
      });
+     cardElement.mount('#card-element');
+
+     $("input[name='optradio']").on("click", function () {
+         if($(".card-payment-radio").is(":checked")) {
+             $(".card-payment-block").show();
+
+             // const cardHolderName = document.getElementById('card-holder-name');
+             const orderId = document.getElementById('order-id');
+             const orderPrice = document.getElementById('order-price');
+             var firstName = $('.first_name').val();
+             var lastName = $('.last_name').val();
+             var cardHolderName = firstName+" "+lastName;
+             var country = $('.country').val();
+             var streetAddress = $('.street_address').val();
+             var appartment = $('.appartment').val();
+             var city = $('.city').val();
+             var zipCode = $('.zip_code').val();
+             var phone = $('.phone').val();
+
+             const cardButton = document.getElementById('card-button');
+
+             cardButton.addEventListener('click', async (e) => {
+                 console.log(firstName);
+                 console.log(firstName.value);
+                 if(cardHolderName == "") {
+                     $(".payment_status").html('<div class="alert alert-danger">Empty Holder Name</div>');
+
+                     return false;
+                 }
+                 const { paymentMethod, error } = await stripe.createPaymentMethod(
+                     'card', cardElement, {
+                         billing_details: { name: cardHolderName }
+                     }
+                 );
+
+                 if (error) {
+                     $.ajax({
+                         url: "/checkout/cancel-purchase",
+                         type: "POST",
+                         data: ({
+                             orderId: orderId.value
+                         }),
+                         beforeSend: function() {
+                             // setting a timeout
+                             $(".payment-load").css("display", "flex");
+                         },
+                         success: function(result){
+                             console.log(result);
+                             $(".payment-load").css("display", "none");
+                             if(result["data"]) {
+                                 $(".payment_status").html('<div class="alert alert-danger">Error</div>');
+                             }
+                         }
+                     });
+
+                     $(".payment_status").html('<div class="alert alert-danger">Card Error</div>');
+                 } else {
+                     $.ajax({
+                         url: "/checkout/purchase",
+                         type: "POST",
+                         data: ({
+                             paymentMethodId : paymentMethod.id,
+                             orderId: orderId.value,
+                             orderPrice: orderPrice.value,
+                             firstName: firstName,
+                             lastName: lastName,
+                             country: country,
+                             city: city,
+                             streetAddress: streetAddress,
+                             appartment: appartment,
+                             zipCode: zipCode,
+                             phone: phone
+                         }),
+                         beforeSend: function() {
+                             // setting a timeout
+                             $(".payment-load").css("display", "flex");
+                         },
+                         success: function(result){
+                             $(".payment-load").css("display", "none");
+                             if(result["data"]) {
+                                 $(".payment_status").html('<div class="alert alert-success">The card has been verified successfully</div>');
+
+                                 location.href = "account";
+                             } else {
+                                 $(".payment_status").html('<div class="alert alert-danger">Error</div>');
+                             }
+                         },
+                     });
+                 }
+             });
+         } else {
+             $(".card-payment-block").hide();
+         }
+     });
+ }
+
+ $(".order-products-btn").on("click", function () {
+     $(this).find("i").toggle();
+     $(this).parent(".order-block").find(".order-products-block").slideToggle(200);
  });
-
-
-

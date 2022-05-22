@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->enum("status", ['paid', 'process', 'declined'])->default("process")->after("total_discount");
+            $table->string("payment_type")->nullable()->after("shipping");
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->dropColumn("status");
+            $table->dropColumn("payment_type");
         });
     }
 };

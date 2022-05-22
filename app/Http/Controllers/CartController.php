@@ -65,7 +65,7 @@ class CartController extends Controller
 
     public function addCheckout() {
         $all_cart = Cart::where("user_id", Auth::id())->get();
-        $is_order = Order::where("user_id", Auth::id())->first();
+        $is_order = Order::where("user_id", Auth::id())->where("status", "process")->first();
 
         if($is_order) {
             $order_prod = OrderProduct::where("order_id", $is_order->id)->get();
@@ -100,7 +100,6 @@ class CartController extends Controller
 
                 $op->save();
             }
-            return redirect()->route("checkout");
         }
 
         return redirect()->route("checkout");

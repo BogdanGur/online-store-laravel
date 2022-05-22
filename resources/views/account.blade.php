@@ -99,7 +99,7 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="other-content like-content">
+                        <div class="other-content like-content" style="display: none;">
                             <h3>liked Products</h3>
 
                             <div class="product-edit-add">
@@ -133,6 +133,58 @@
                                     @endif
                                 </div>
                             </div>
+                        </div>
+                        <div class="other-content orders-content" style="display: none;">
+                            <h3>My Orders</h3>
+
+                            @if(count($orders) > 0)
+                                <div class="orders-block">
+                                    @foreach($orders as $order)
+                                        <div class="order-block">
+                                            <div class="info-order-block">
+                                                <div class="order-ps">
+                                                    <div class="order-id">{{ $order->id }}</div>
+                                                    @if($order->total_discount > 0)
+                                                        <div class="order-price" style="margin-right: 0;"><s>${{ $order->subtotal_price }}</s></div>
+                                                        <div class="order-price" style="color: darkred; margin-right: 5px; margin-left: 3px;"><sup>${{ $order->total_discount }}</sup></div>
+                                                        <i class="fas fa-arrow-right"></i>
+                                                        <div class="order-price">${{ $order->total_price }}</div>
+                                                    @else
+                                                        <div class="order-price">${{ $order->total_price }}</div>
+                                                    @endif
+                                                    @if($order->status == "paid")
+                                                        <div class="order-status status-paid">Paid</div>
+                                                    @elseif($order->status == "process")
+                                                        <div class="order-status status-process">Process</div>
+                                                    @else
+                                                        <div class="order-status status-declined">Declined</div>
+                                                    @endif
+                                                </div>
+                                                @if($order->status == "process")
+                                                    <a href="{{ route("checkout") }}" class="order-to-btn"><i class="fas fa-arrow-right"></i></a>
+                                                @endif
+                                                <div class="order-date">{{ date("d/m/Y", strtotime($order->updated_at)) }}</div>
+                                            </div>
+                                            <div class="order-products-block">
+                                                @foreach($order->prod as $prod)
+                                                    <div class="order-product">
+                                                        <div class="o-img_name">
+                                                            <div class="o-img"><img src="{{ \Illuminate\Support\Facades\Storage::url("public/product_photos/".$prod->product->image->img)  }}" alt=""></div>
+                                                            <div class="o-name">{{ $prod->product->name }}</div>
+                                                        </div>
+                                                        <div class="o-price-quantity-size">
+                                                            <div class="o-price">${{ $prod->price }}</div>
+                                                            <div class="o-quantity">{{ $prod->quantity }}</div>
+                                                            <div class="o-size">{{ $prod->size }}</div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            <div class="order-products-btn"><i class="fas fa-angle-down"></i><i class="fas fa-angle-up" style="display: none;"></i></div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

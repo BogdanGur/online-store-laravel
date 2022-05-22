@@ -35,7 +35,9 @@ Route::prefix("cart")->group(function () {
 #Checkout
 Route::prefix("checkout")->group(function () {
     Route::get("/", "App\Http\Controllers\CheckoutController@index")->name("checkout");
-    Route::get("/delete-order/{id}", "App\Http\Controllers\CheckoutController@delete_order")->name("delete_order");
+    Route::get("/delete-order/{id}", "App\Http\Controllers\CheckoutController@deleteOrder")->name("delete_order");
+    Route::post('/purchase', "App\Http\Controllers\CheckoutController@purchase")->name("purchase");
+    Route::post('/cancel-purchase', "App\Http\Controllers\CheckoutController@cancelPurchase")->name("cancel_purchase");
 });
 
 #Product Page

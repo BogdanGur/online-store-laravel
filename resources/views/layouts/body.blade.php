@@ -144,6 +144,7 @@
 
 <script src="{{ asset("js/jquery.min.js") }}"></script>
 <script src="{{ asset("js/jquery-migrate-3.0.1.min.js") }}"></script>
+<script src="https://js.stripe.com/v3/"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="{{ asset("js/popper.min.js") }}"></script>
 <script src="{{ asset("js/bootstrap.min.js") }}"></script>
