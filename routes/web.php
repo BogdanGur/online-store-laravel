@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \Illuminate\Support\Facades\Redis;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +68,17 @@ Route::prefix("admin")->group(function() {
 });
 
 Route::get("/send-mail", "App\Http\Controllers\MailController@send")->name("mail.send");
+
+Route::get("/chat", function () {
+    $redis = Redis::connection();
+
+    $redis->flushall();
+
+    $redis->hset("users", "name", "Bogdan");
+    $redis->hset("users", "surname", "Gurskyi");
+    echo $redis->hget("users", "name");
+    echo $redis->hget("users", "surname");
+});
 
 
 require __DIR__.'/auth.php';

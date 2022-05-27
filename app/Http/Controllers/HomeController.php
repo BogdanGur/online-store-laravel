@@ -8,6 +8,7 @@ use App\Models\Site;
 use App\Payment\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redis;
 
 class HomeController extends Controller
 {

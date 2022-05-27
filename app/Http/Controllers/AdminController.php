@@ -128,13 +128,12 @@ class AdminController extends Controller
         $product->discount = $request->discount;
         $product->discount_price = $request->price*(1-$request->discount/100);
         $product->variation = $request->size;
-        $cart->total = $cart->quantity * $product->discount_price;
+        if($cart) {
+            $cart->total = $cart->quantity * $product->discount_price;
+            $cart->save();
+        }
 
         $product->save();
-        $cart->save();
-
-        $cart->total = $cart->quantity * $product->discount_price;
-        $cart->save();
 
         if($request->hasFile("image")) {
 

@@ -114,7 +114,7 @@
                                                     <p class="font-italic text-muted mb-0 small">{{ \Illuminate\Support\Str::words($op->product->description, 10) }}</p>
                                                     <p class="font-italic text-muted mb-0 small"><b>Size: {{ $op->size }}</b></p>
                                                     <div class="d-flex align-items-center justify-content-between mt-1">
-                                                        <h6 class="font-weight-bold my-2">${{ $op->price }} x{{ $op->quantity }} <span style="color: #439733; font-size: 19px;">${{ $op->price * $op->quantity }}</span></h6>
+                                                        <h6 class="font-weight-bold my-2">${{ $op->price/$op->quantity }} x{{ $op->quantity }} <span style="color: #439733; font-size: 19px;">${{ $op->price }}</span></h6>
                                                     </div>
                                                 </div><img style="width: 150px; height: auto;" src="{{ \Illuminate\Support\Facades\Storage::url("public/product_photos/".$op->product->image->img) }}" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
                                             </div>
