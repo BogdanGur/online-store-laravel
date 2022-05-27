@@ -14,6 +14,6 @@ class HomeController extends Controller
 {
     public function index() {
 
-        return view("home", ["site" => Site::findOrFail(1), "products" => Product::all(), "total_cart" => count(Cart::where("user_id", Auth::id())->get())]);
+        return view("home", ["site" => Site::findOrFail(1), "products" => Product::paginate(5), "total_cart" => count(Cart::where("user_id", Auth::id())->get())]);
     }
 }
