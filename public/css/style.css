@@ -13427,6 +13427,14 @@ h2 {
     color: #242424;
     font-size: 13px;
 }
+.search-prod {
+    margin: 0 10px 40px 10px;
+    display: flex;
+    justify-content: center;
+}
+.search-prod .input-group {
+    width: auto;
+}
 
 @media screen and (max-width: 768px) {
     .wrapper {

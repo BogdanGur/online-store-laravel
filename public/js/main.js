@@ -644,3 +644,15 @@
      $(this).find("i").toggle();
      $(this).parent(".order-block").find(".order-products-block").slideToggle(200);
  });
+
+
+ function _search(q) {
+     var s = "?q="+q;
+
+     // if(location.search.length < 1) {
+     //     s = "?q="+q;
+     // } else {
+     //     s = "&q="+q;
+     // }
+     window.location.search = s;
+ }

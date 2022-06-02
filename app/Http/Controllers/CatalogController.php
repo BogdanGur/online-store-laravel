@@ -13,7 +13,15 @@ class CatalogController extends Controller
 {
     public function index() {
 
-        return view("catalog", ["site" => Site::find(1), "products" => Product::paginate(5), "total_cart" => count(Cart::where("user_id", Auth::id())->get())]);
+        $s = \request("q");
+
+        if($s) {
+            $products = Product::where("name", "LIKE", "%{$s}%")->paginate(5);
+        } else {
+            $products = Product::paginate(5);
+        }
+
+        return view("catalog", ["site" => Site::find(1), "products" => $products, "total_cart" => count(Cart::where("user_id", Auth::id())->get())]);
     }
 
     public function likeProduct(Request $request) {

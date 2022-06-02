@@ -16,6 +16,11 @@
 
     <section class="ftco-section bg-light">
         <div class="container-fluid">
+            <div class="search-prod">
+                <div class="input-group">
+                    <input type="text" name="q" id="search-input"><button onclick="_search($('#search-input').val())">Search</button>
+                </div>
+            </div>
             <div class="row">
                 @foreach($products as $product)
                     <div class="col-sm col-md-6 col-lg ftco-animate">
@@ -64,7 +69,7 @@
             </div>
             <div class="row mt-5">
                 <div class="col text-center">
-                    {{ $products->links() }}
+                    {{ $products->appends(["q" => request("q")])->links() }}
                 </div>
             </div>
         </div>
