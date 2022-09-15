@@ -16,12 +16,6 @@ class HomeController extends Controller
 
         $s = \request("q");
 
-        if($s) {
-            $products = Product::where("name", "LIKE", "%{$s}%")->paginate(5);
-        } else {
-            $products = Product::paginate(5);
-        }
-
-        return view("home", ["site" => Site::findOrFail(1), "products" => $products, "total_cart" => count(Cart::where("user_id", Auth::id())->get())]);
+        return view("home", ["site" => Site::findOrFail(1), "products" => Product::where("name", "LIKE", "%{$s}%")->paginate(5), "total_cart" => count(Cart::where("user_id", Auth::id())->get())]);
     }
 }

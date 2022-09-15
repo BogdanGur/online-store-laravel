@@ -25,12 +25,12 @@
                 @foreach($products as $product)
                     <div class="col-sm col-md-6 col-lg ftco-animate">
                         <div class="product">
-                            <a href="{{ route("product_page", $product->slug) }}" class="img-prod">
+                            <a href="{{ route("productPage", $product->slug) }}" class="img-prod">
                                 <img class="img-fluid" src="{{ Illuminate\Support\Facades\Storage::url("public/product_photos/".$product->image->img) }}" alt="BG Corp">
                                 @if($product->discount) <span class="status">{{ $product->discount }}%</span> @endif
                             </a>
                             <div class="text py-3 px-3">
-                                <h3><a href="{{ route("product_page", $product->slug) }}">{{ $product->name }}</a></h3>
+                                <h3><a href="{{ route("productPage", $product->slug) }}">{{ $product->name }}</a></h3>
                                 <div class="d-flex">
                                     <div class="pricing">
                                         @if($product->discount)

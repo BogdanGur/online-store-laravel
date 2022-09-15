@@ -189,7 +189,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="{{ route("delete_order", $order->id) }}" class="alert alert-danger cancel_order">Отменить Order</a>
+                    <a href="{{ route("checkout.orderDelete", $order->id) }}" class="alert alert-danger cancel_order">Отменить Order</a>
                 </div> <!-- .col-md-8 -->
             </div>
         </div>

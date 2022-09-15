@@ -33,7 +33,7 @@
     <h1>Admin</h1>
     <div class="wrapper">
         <div class="sign-up-content">
-            <form action="{{ route("admin_login") }}" method="post" class="signup-form">
+            <form action="{{ route("admin.login") }}" method="post" class="signup-form">
                 @csrf
 
                 <div class="form-textbox">

@@ -42,12 +42,12 @@
                                 @endphp
                                     @foreach($products as $product)
                                         <tr class="text-center cart_product_{{ $product->id }}">
-                                            <td class="product-remove"><a href="{{ route("remove_cart", $product->id) }}"><i class="fas fa-times"></i></a></td>
+                                            <td class="product-remove"><a href="{{ route("cart.remove", $product->id) }}"><i class="fas fa-times"></i></a></td>
                                             <td class="image-prod">
                                                 <div class="img" style="background-image:url({{ \Illuminate\Support\Facades\Storage::url("public/product_photos/".$product->product->image->img) }});"></div>
                                             </td>
                                             <td class="product-name">
-                                                <a href="{{ route("product_page", $product->product->slug) }}"><h3>{{ $product->product->name }}</h3></a>
+                                                <a href="{{ route("productPage", $product->product->slug) }}"><h3>{{ $product->product->name }}</h3></a>
                                                 <p>{{ \Illuminate\Support\Str::words($product->product->description, 15) }}</p>
                                             </td>
                                             @php $full_price += $product->product->price * $product->quantity; @endphp
@@ -101,7 +101,7 @@
                             <span>${{ $total }}</span>
                         </p>
                     </div>
-                    <p class="text-center"><a href="{{ route("add_checkout") }}/?price={{ $total }}&subtotal={{ $full_price }}&discount={{ $discount }}" class="btn btn-primary py-3 px-4">Proceed to
+                    <p class="text-center"><a href="{{ route("cart.checkoutAdd") }}/?price={{ $total }}&subtotal={{ $full_price }}&discount={{ $discount }}" class="btn btn-primary py-3 px-4">Proceed to
                             Checkout</a></p>
 
                     <br>

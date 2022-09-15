@@ -8,6 +8,7 @@ use App\Http\Resources\ProductResource;
 use App\Models\Images;
 use App\Models\Like;
 use App\Models\Product;
+use Illuminate\Database\Eloquent\Model;
 use \Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -41,6 +42,21 @@ class ProductController extends Controller
         $new_product->description = $request->description;
         $new_product->price = $request->price;
         $new_product->save();
+
+        if($request->hasFile("image")) {
+            $i = 1;
+//            foreach($request->image as $img) {
+                $images = new Images();
+
+                $request->image->store("product_photos", "public");
+                $images->product_id = $new_product->id;
+                $images->img = $request->image->hashName();
+                $images->sorting = $i;
+
+                $images->save();
+//                $i++;
+//            }
+        }
 
         return new ProductResource(Product::findOrFail($new_product->id));
     }

@@ -46,7 +46,7 @@
                             <h3>Main Information</h3>
 
                             <div class="sign-up-content">
-                                <form action="{{ route("update_user") }}" method="post" enctype="multipart/form-data">
+                                <form action="{{ route("account.userUpdate") }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-textbox">
                                         <label for="name">Name</label>
@@ -111,7 +111,7 @@
                                                     <div class="left-pr-info">
                                                         <div class="pr-img"><img src="{{ Illuminate\Support\Facades\Storage::url("public/product_photos/".$like->product->image->img) }}" alt=""></div>
                                                         <div class="pr-name-desc">
-                                                            <div class="pr-name"><a href="{{ route("product_page", $like->product->slug) }}">{{ $like->product->name }}</a></div>
+                                                            <div class="pr-name"><a href="{{ route("productPage", $like->product->slug) }}">{{ $like->product->name }}</a></div>
                                                             <p class="pr-desc">{{ Illuminate\Support\Str::words($like->product->description, 5) }}</p>
                                                         </div>
                                                     </div>
@@ -126,7 +126,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-adm-btns">
-                                                    <a href="{{ route("delete_like", $like->product->id) }}" class="delete_product_btn">Delete</a>
+                                                    <a href="{{ route("account.likeDelete", $like->product->id) }}" class="delete_product_btn">Delete</a>
                                                 </div>
                                             </div>
                                         @endforeach

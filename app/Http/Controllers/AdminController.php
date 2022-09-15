@@ -34,7 +34,7 @@ class AdminController extends Controller
                 "orders" => Order::all()
             ]);
         }
-        return redirect()->route("show_login");
+        return redirect()->route("admin.loginShow");
     }
 
     public function showLogin() {

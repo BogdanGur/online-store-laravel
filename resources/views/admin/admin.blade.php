@@ -54,7 +54,7 @@
                     </ul>
                     <br>
                 </div>
-                <a href="{{ route("admin_logout") }}" class="logout">Logout</a>
+                <a href="{{ route("admin.logout") }}" class="logout">Logout</a>
             </aside>
             <div class="bgcontent">
                 <div class="user-head">
@@ -84,7 +84,7 @@
                         <h3>Admin Information</h3>
 
                         <div class="sign-up-content">
-                            <form action="{{ route("update_admin") }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route("admin.update") }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-textbox">
                                     <label for="name">Name</label>
@@ -165,11 +165,11 @@
                                                 </div>
                                             </div>
                                             <div class="product-adm-btns">
-                                                <a href="{{ route("delete_product", $product->id) }}" class="delete_product_btn">Delete</a>
+                                                <a href="{{ route("admin.productDelete", $product->id) }}" class="delete_product_btn">Delete</a>
                                                 <div class="open-edit-btn"><i class="fas fa-angle-down"></i> <i class="fas fa-angle-up" style="display: none;"></i> Edit</div>
                                             </div>
                                             <div class="sign-up-content">
-                                                <form action="{{ route("update_product", $product->id) }}" method="post" enctype="multipart/form-data">
+                                                <form action="{{ route("admin.productUpdate", $product->id) }}" method="post" enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="form-textbox">
                                                         <label for="name">Name</label>
@@ -251,7 +251,7 @@
                                 <div class="product-cont">
                                     <h3 style="text-align: center;">Add product</h3>
                                     <div class="sign-up-content">
-                                        <form action="{{ route("add_product") }}" method="post" enctype="multipart/form-data">
+                                        <form action="{{ route("admin.productAdd") }}" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-textbox">
                                                 <label for="name">Name</label>
@@ -325,7 +325,7 @@
                         <h3>Site Information</h3>
 
                         <div class="sign-up-content">
-                            <form action="{{ route("update_site_info") }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route("admin.siteInfoUpdate") }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <h3>Home Section</h3>
 
