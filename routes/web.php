@@ -82,6 +82,8 @@ Route::prefix("admin")->controller(AdminController::class)->group(function() {
     Route::post("/update-site-info", 'updateSiteInfo')->middleware("auth:admin")->name("admin.siteInfoUpdate");
 });
 
+Route::get("/locale/{lang}", [HomeController::class, 'changeLocale'])->name('changeLocale');
+
 Route::get("/send-mail", [MailController::class, 'send'])->name("mail.send");
 
 require __DIR__.'/auth.php';

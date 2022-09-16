@@ -194,13 +194,21 @@ class AdminController extends Controller
         $site = Site::find(1);
 
         $site->home_title = $request->home_title;
+        $site->home_title_ua = $request->home_title_ua;
         $site->home_mini_about = $request->home_mini_about;
+        $site->home_mini_about_ua = $request->home_mini_about_ua;
         $site->home_since = $request->home_since;
+        $site->home_since_ua = $request->home_since_ua;
         $site->home_subtitle = $request->home_subtitle;
+        $site->home_subtitle_ua = $request->home_subtitle_ua;
         $site->banner = $request->banner;
+        $site->banner_ua = $request->banner_ua;
         $site->about_title = $request->about_title;
+        $site->about_title_ua = $request->about_title_ua;
         $site->about_content = $request->about_content;
+        $site->about_content_ua = $request->about_content_ua;
         $site->contact_location = $request->contact_location;
+        $site->contact_location_ua = $request->contact_location_ua;
         $site->contact_phone = $request->contact_phone;
         $site->contact_email = $request->contact_email;
 

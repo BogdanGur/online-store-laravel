@@ -12,9 +12,9 @@
                     </div>
                     <div class="navbar-body">
                         <ul>
-                            <li><a href="#" data-section="main"><i class="fas fa-home"></i> Main</a></li>
-                            <li><a href="#" data-section="like"><i class="fas fa-heart"></i> Liked</a></li>
-                            <li><a href="#" data-section="orders"><i class="far fa-credit-card"></i> Orders</a></li>
+                            <li><a href="#" data-section="main"><i class="fas fa-home"></i> {{ __('account.panel.main') }}</a></li>
+                            <li><a href="#" data-section="like"><i class="fas fa-heart"></i> {{ __('account.panel.liked') }}</a></li>
+                            <li><a href="#" data-section="orders"><i class="far fa-credit-card"></i> {{ __('account.panel.orders') }}</a></li>
                         </ul>
                     </div>
                 </aside>
@@ -43,13 +43,13 @@
                         @endif
 
                         <div class="other-content main-content">
-                            <h3>Main Information</h3>
+                            <h3>{{ __('account.main.title') }}</h3>
 
                             <div class="sign-up-content">
                                 <form action="{{ route("account.userUpdate") }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-textbox">
-                                        <label for="name">Name</label>
+                                        <label for="name">{{ __('account.main.form.name') }}</label>
                                         <input type="text" name="name" id="name" value="{{ $user->name }}">
                                     </div>
                                     @if($errors->has("name"))
@@ -57,7 +57,7 @@
                                     @endif
 
                                     <div class="form-textbox">
-                                        <label for="surname">Surname</label>
+                                        <label for="surname">{{ __('account.main.form.surname') }}</label>
                                         <input type="text" name="surname" id="surname" value="{{ $user->surname }}">
                                     </div>
                                     @if($errors->has("surname"))
@@ -73,7 +73,7 @@
                                     @endif
 
                                     <div class="form-textbox">
-                                        <label for="phone">Phone</label>
+                                        <label for="phone">{{ __('account.main.form.phone') }}</label>
                                         <input type="text" name="phone" id="phone" value="{{ $user->phone }}">
                                     </div>
                                     @if($errors->has("phone"))
@@ -81,12 +81,12 @@
                                     @endif
 
                                     <div class="form-textbox">
-                                        <label for="pass">Password</label>
+                                        <label for="pass">{{ __('account.main.form.password') }}</label>
                                         <input type="password" name="password" id="pass">
                                     </div>
 
                                     <div class="form-textbox">
-                                        <label for="photo">Photo</label>
+                                        <label for="photo">{{ __('account.main.form.photo') }}</label>
                                         <input type="file" name="photo" id="photo">
                                     </div>
                                     @if($errors->has("photo"))
@@ -94,13 +94,13 @@
                                     @endif
 
                                     <div class="form-textbox">
-                                        <input type="submit" name="submit" id="submit" class="submit" value="Update" />
+                                        <input type="submit" name="submit" id="submit" class="submit" value="{{ __('account.main.form.button') }}" />
                                     </div>
                                 </form>
                             </div>
                         </div>
                         <div class="other-content like-content" style="display: none;">
-                            <h3>liked Products</h3>
+                            <h3>{{ __('account.liked.title') }}</h3>
 
                             <div class="product-edit-add">
                                 <div class="product-edit">
@@ -126,7 +126,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-adm-btns">
-                                                    <a href="{{ route("account.likeDelete", $like->product->id) }}" class="delete_product_btn">Delete</a>
+                                                    <a href="{{ route("account.likeDelete", $like->product->id) }}" class="delete_product_btn">{{ __('account.liked.button') }}</a>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -135,7 +135,7 @@
                             </div>
                         </div>
                         <div class="other-content orders-content" style="display: none;">
-                            <h3>My Orders</h3>
+                            <h3>{{ __('account.orders.title') }}</h3>
 
                             @if(count($orders) > 0)
                                 <div class="orders-block">

@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center">
                 <div class="col-md-9 ftco-animate text-center">
-                    <h1 class="mb-0 bread">Checkout</h1>
+                    <h1 class="mb-0 bread">{{ __('checkout.title') }}</h1>
                     <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Checkout</span></p>
                 </div>
             </div>
@@ -19,19 +19,19 @@
             <div class="row justify-content-center">
                 <div class="col-xl-8 ftco-animate">
                     <form action="#" class="billing-form bg-light p-3 p-md-5">
-                        <h3 class="mb-4 billing-heading">Shipping Details</h3>
+                        <h3 class="mb-4 billing-heading">{{ __('checkout.ship.title') }}</h3>
                         <div class="row align-items-end">
                             <div class="col-md-6">
                                 <div class="alert alert-danger first_name-error" style="display: none;"></div>
                                 <div class="form-group">
-                                    <label for="firstname">Firt Name *</label>
+                                    <label for="firstname">{{ __('checkout.ship.name') }}e *</label>
                                     <input type="text" class="form-control first_name" name="first_name" placeholder="">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="alert alert-danger last_name-error" style="display: none;"></div>
                                 <div class="form-group">
-                                    <label for="lastname">Last Name *</label>
+                                    <label for="lastname">{{ __('checkout.ship.surname') }} *</label>
                                     <input type="text" class="form-control last_name" name="last_name" placeholder="">
                                 </div>
                             </div>
@@ -39,7 +39,7 @@
                             <div class="col-md-12">
                                 <div class="alert alert-danger country-error" style="display: none;"></div>
                                 <div class="form-group">
-                                    <label for="country">State / Country *</label>
+                                    <label for="country">{{ __('checkout.ship.country') }} *</label>
                                     <div class="select-wrap">
                                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                                         <select name="country" id="" class="form-control country">
@@ -58,7 +58,7 @@
                             <div class="col-md-6">
                                 <div class="alert alert-danger street_address-error" style="display: none;"></div>
                                 <div class="form-group">
-                                    <label for="streetaddress">Street Address *</label>
+                                    <label for="streetaddress">{{ __('checkout.ship.address') }} *</label>
                                     <input type="text" class="form-control street_address" name="street_address" placeholder="House number and street name">
                                 </div>
                             </div>
@@ -71,14 +71,14 @@
                             <div class="col-md-6">
                                 <div class="alert alert-danger city-error" style="display: none;"></div>
                                 <div class="form-group">
-                                    <label for="towncity">Town / City *</label>
+                                    <label for="towncity">{{ __('checkout.ship.city') }} *</label>
                                     <input type="text" class="form-control city" name="city" placeholder="">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="alert alert-danger zip_code-error" style="display: none;"></div>
                                 <div class="form-group">
-                                    <label for="postcodezip">Postcode / ZIP *</label>
+                                    <label for="postcodezip">{{ __('checkout.ship.zip') }} *</label>
                                     <input type="text" class="form-control zip_code" name="zip_code" placeholder="">
                                 </div>
                             </div>
@@ -86,7 +86,7 @@
                             <div class="col-md-6">
                                 <div class="alert alert-danger phone-error" style="display: none;"></div>
                                 <div class="form-group">
-                                    <label for="phone">Phone *</label>
+                                    <label for="phone">{{ __('checkout.ship.phone') }} *</label>
                                     <input type="text" class="form-control phone" name="phone" placeholder="">
                                 </div>
                             </div>
@@ -128,22 +128,22 @@
                     <div class="row mt-5 pt-3 d-flex">
                         <div class="col-md-6 d-flex">
                             <div class="cart-detail cart-total bg-light p-3 p-md-4">
-                                <h3 class="billing-heading mb-4">Cart Total</h3>
+                                <h3 class="billing-heading mb-4">{{ __('cart.checkout.title') }}</h3>
                                 <p class="d-flex">
-                                    <span>Subtotal</span>
+                                    <span>{{ __('cart.checkout.subtotal') }}</span>
                                     <span>${{ $order->subtotal_price }}</span>
                                 </p>
                                 <p class="d-flex">
-                                    <span>Delivery</span>
+                                    <span>{{ __('cart.checkout.delivery') }}</span>
                                     <span>$0.00</span>
                                 </p>
                                 <p class="d-flex">
-                                    <span>Discount</span>
+                                    <span>{{ __('cart.checkout.discount') }}</span>
                                     <span>${{ $order->total_discount }}</span>
                                 </p>
                                 <hr>
                                 <p class="d-flex total-price">
-                                    <span>Total</span>
+                                    <span>{{ __('cart.checkout.total') }}</span>
                                     <span>${{ $order->total_price }}</span>
                                 </p>
                             </div>
@@ -153,11 +153,11 @@
                                 <div class="lds-dual-ring"></div>
                             </div>
                             <div class="cart-detail bg-light p-3 p-md-4">
-                                <h3 class="billing-heading mb-4">Payment Method</h3>
+                                <h3 class="billing-heading mb-4">{{ __('checkout.pay.title') }}</h3>
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <div class="radio">
-                                            <label><input type="radio" name="optradio" class="mr-2 card-payment-radio"> Direct Bank Tranfer</label>
+                                            <label><input type="radio" name="optradio" class="mr-2 card-payment-radio"> {{ __('checkout.pay.bank') }}</label>
                                         </div>
                                         <div class="payment-block card-payment-block">
                                             <input type="hidden" id="order-id" value="{{ $order->id }}">
@@ -178,18 +178,18 @@
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <div class="checkbox">
-                                            <label><input type="checkbox" value="" class="mr-2"> I have read and accept the terms and conditions</label>
+                                            <label><input type="checkbox" value="" class="mr-2"> {{ __('checkout.pay.terms') }}</label>
                                         </div>
                                     </div>
                                 </div>
-                                <p><button class="btn btn-primary py-3 px-4" id="card-button">Place an order</button></p>
+                                <p><button class="btn btn-primary py-3 px-4" id="card-button">{{ __('checkout.button') }}</button></p>
                                 <div class="payment_status">
 
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <a href="{{ route("checkout.orderDelete", $order->id) }}" class="alert alert-danger cancel_order">Отменить Order</a>
+                    <a href="{{ route("checkout.orderDelete", $order->id) }}" class="alert alert-danger cancel_order">{{ __('checkout.cancelOrder') }}</a>
                 </div> <!-- .col-md-8 -->
             </div>
         </div>
@@ -200,14 +200,14 @@
             <div class="container">
                 <div class="row d-flex justify-content-center py-5">
                     <div class="col-md-7 text-center heading-section ftco-animate">
-                        <h1 class="big">Subscribe</h1>
-                        <h2>Subcribe to our Newsletter</h2>
+                        <h1 class="big">{{ __('main.sub.subscribe') }}</h1>
+                        <h2>{{ __('main.sub.invite') }}</h2>
                         <div class="row d-flex justify-content-center mt-5">
                             <div class="col-md-8">
                                 <form action="#" class="subscribe-form">
                                     <div class="form-group d-flex">
-                                        <input type="text" class="form-control" placeholder="Enter email address">
-                                        <input type="submit" value="Subscribe" class="submit px-3">
+                                        <input type="text" class="form-control" placeholder="{{ __('main.sub.input') }}">
+                                        <input type="submit" value="{{ __('main.sub.button') }}" class="submit px-3">
                                     </div>
                                 </form>
                             </div>

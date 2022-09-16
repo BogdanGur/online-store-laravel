@@ -7,11 +7,11 @@
         <div class="overlay"></div>
         <div class="container">
             <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
-                <h3 class="v">{{ $site->home_mini_about }}</h3>
-                <h3 class="vr">{{ $site->home_since }}</h3>
+                <h3 class="v">{{ app()->getLocale() == 'en' ? $site->home_mini_about : $site->home_mini_about_ua }}</h3>
+                <h3 class="vr">{{ app()->getLocale() == 'en' ? $site->home_since :  $site->home_since_ua }}</h3>
                 <div class="col-md-11 ftco-animate text-center">
-                    <h1>{{ $site->home_title }}</h1>
-                    <h2><span>{{ $site->home_subtitle }}</span></h2>
+                    <h1>{{ app()->getLocale() == 'en' ? $site->home_title : $site->home_title_ua }}</h1>
+                    <h2><span>{{ app()->getLocale() == 'en' ? $site->home_subtitle : $site->home_subtitle_ua }}</span></h2>
                 </div>
                 <div class="mouse">
                     <a href="#" class="mouse-icon">
@@ -24,105 +24,6 @@
 
     <div class="goto-here"></div>
 
-{{--    <section class="ftco-section ftco-product">--}}
-{{--        <div class="container">--}}
-{{--            <div class="row justify-content-center mb-3 pb-3">--}}
-{{--                <div class="col-md-12 heading-section text-center ftco-animate">--}}
-{{--                    <h1 class="big">Trending</h1>--}}
-{{--                    <h2 class="mb-4">Trending</h2>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <div class="product-slider owl-carousel ftco-animate">--}}
-{{--                        <div class="item">--}}
-{{--                            <div class="product">--}}
-{{--                                <a href="#" class="img-prod"><img class="img-fluid" src="images/product-1.jpg" alt="Colorlib Template">--}}
-{{--                                    <span class="status">30%</span>--}}
-{{--                                </a>--}}
-{{--                                <div class="text pt-3 px-3">--}}
-{{--                                    <h3><a href="#">Young Woman Wearing Dress</a></h3>--}}
-{{--                                    <div class="d-flex">--}}
-{{--                                        <div class="pricing">--}}
-{{--                                            <p class="price"><span class="mr-2 price-dc">$120.00</span><span class="price-sale">$80.00</span></p>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="item">--}}
-{{--                            <div class="product">--}}
-{{--                                <a href="#" class="img-prod"><img class="img-fluid" src="images/product-2.jpg" alt="Colorlib Template"></a>--}}
-{{--                                <div class="text pt-3 px-3">--}}
-{{--                                    <h3><a href="#">Young Woman Wearing Dress</a></h3>--}}
-{{--                                    <div class="d-flex">--}}
-{{--                                        <div class="pricing">--}}
-{{--                                            <p class="price"><span>$120.00</span></p>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="item">--}}
-{{--                            <div class="product">--}}
-{{--                                <a href="#" class="img-prod"><img class="img-fluid" src="images/product-3.jpg" alt="Colorlib Template"></a>--}}
-{{--                                <div class="text pt-3 px-3">--}}
-{{--                                    <h3><a href="#">Young Woman Wearing Dress</a></h3>--}}
-{{--                                    <div class="d-flex">--}}
-{{--                                        <div class="pricing">--}}
-{{--                                            <p class="price"><span>$120.00</span></p>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="item">--}}
-{{--                            <div class="product">--}}
-{{--                                <a href="#" class="img-prod"><img class="img-fluid" src="images/product-4.jpg" alt="Colorlib Template"></a>--}}
-{{--                                <div class="text pt-3 px-3">--}}
-{{--                                    <h3><a href="#">Young Woman Wearing Dress</a></h3>--}}
-{{--                                    <div class="d-flex">--}}
-{{--                                        <div class="pricing">--}}
-{{--                                            <p class="price"><span>$120.00</span></p>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="item">--}}
-{{--                            <div class="product">--}}
-{{--                                <a href="#" class="img-prod"><img src="images/product-5.jpg" alt="Colorlib Template">--}}
-{{--                                    <span class="status">30%</span>--}}
-{{--                                </a>--}}
-{{--                                <div class="text pt-3 px-3">--}}
-{{--                                    <h3><a href="#">Young Woman Wearing Dress</a></h3>--}}
-{{--                                    <div class="d-flex">--}}
-{{--                                        <div class="pricing">--}}
-{{--                                            <p class="price"><span class="mr-2 price-dc">$120.00</span><span class="price-sale">$80.00</span></p>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="item">--}}
-{{--                            <div class="product">--}}
-{{--                                <a href="#" class="img-prod"><img src="images/product-6.jpg" alt="Colorlib Template"></a>--}}
-{{--                                <div class="text pt-3 px-3">--}}
-{{--                                    <h3><a href="#">Young Woman Wearing Dress</a></h3>--}}
-{{--                                    <div class="d-flex">--}}
-{{--                                        <div class="pricing">--}}
-{{--                                            <p class="price"><span>$120.00</span></p>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
-
     <section class="ftco-section ftco-no-pb ftco-no-pt bg-light" style="padding: 50px 0 !important;">
         <div class="container">
             <div class="row">
@@ -130,11 +31,11 @@
                 <div class="col-md-7 py-5 wrap-about pb-md-5 ftco-animate">
                     <div class="heading-section-bold mb-5 mt-md-5">
                         <div class="ml-md-0">
-                            <h2 class="mb-4">{{ $site->about_title }}</h2>
+                            <h2 class="mb-4">{{ app()->getLocale() == 'en' ? $site->about_title : $site->about_title_ua }}</h2>
                         </div>
                     </div>
                     <div class="pb-md-5">
-                        <p>{{ $site->about_content }}</p>
+                        <p>{{ app()->getLocale() == 'en' ? $site->about_content : $site->about_content_ua }}</p>
                     </div>
                 </div>
             </div>
@@ -146,15 +47,15 @@
             <div class="container">
                 <div class="row justify-content-center mb-3 pb-3">
                     <div class="col-md-12 heading-section text-center ftco-animate">
-                        <h1 class="big">Products</h1>
-                        <h2 class="mb-4">Our Products</h2>
+                        <h1 class="big">{{ __('home.products') }}</h1>
+                        <h2 class="mb-4">{{ __('home.ourProducts') }}</h2>
                     </div>
                 </div>
             </div>
             <div class="container-fluid">
                 <div class="search-prod">
                     <div class="input-group">
-                        <input type="text" name="q" id="search-input"><button onclick="_search($('#search-input').val())">Search</button>
+                        <input type="text" name="q" id="search-input"><button onclick="_search($('#search-input').val())">{{ __('home.search') }}</button>
                     </div>
                 </div>
                 <div class="row">
@@ -181,7 +82,7 @@
                                     </div>
                                     <hr>
                                     <p class="bottom-area d-flex">
-                                        <a href="#" class="add-to-cart add-to-cart-fast cart_but_{{ $product->id }}"><span>Add to cart <i class="fas fa-plus"></i><i class="fas fa-check" style="display: none;"></i></span></a>
+                                        <a href="#" class="add-to-cart add-to-cart-fast cart_but_{{ $product->id }}"><span>{{ __('product.addToCart') }} <i class="fas fa-plus"></i><i class="fas fa-check" style="display: none;"></i></span></a>
                                         <select name="size">
                                             <option value="S">S</option>
                                             <option value="M">M</option>
@@ -216,7 +117,7 @@
         <div class="container">
             <div class="row justify-content-center mb-3 pb-3">
                 <div class="col-md-12 heading-section ftco-animate">
-                    <h2>{{ $site->banner }}</h2>
+                    <h2>{{ app()->getLocale() == 'en' ? $site->banner : $site->banner_ua }}</h2>
                 </div>
             </div>
         </div>
@@ -231,7 +132,7 @@
                             <div class="block-18 text-center">
                                 <div class="text">
                                     <strong class="number" data-number="10000">0</strong>
-                                    <span>Happy Customers</span>
+                                    <span>{{ __('main.banner.customers') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -239,7 +140,7 @@
                             <div class="block-18 text-center">
                                 <div class="text">
                                     <strong class="number" data-number="100">0</strong>
-                                    <span>Branches</span>
+                                    <span>{{ __('main.banner.branches') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -247,7 +148,7 @@
                             <div class="block-18 text-center">
                                 <div class="text">
                                     <strong class="number" data-number="1000">0</strong>
-                                    <span>Partner</span>
+                                    <span>{{ __('main.banner.partner') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -255,7 +156,7 @@
                             <div class="block-18 text-center">
                                 <div class="text">
                                     <strong class="number" data-number="100">0</strong>
-                                    <span>Awards</span>
+                                    <span>{{ __('main.banner.awards') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -270,14 +171,14 @@
             <div class="container">
                 <div class="row d-flex justify-content-center py-5">
                     <div class="col-md-7 text-center heading-section ftco-animate">
-                        <h1 class="big">Subscribe</h1>
-                        <h2>Subcribe to our Newsletter</h2>
+                        <h1 class="big">{{ __('main.sub.subscribe') }}</h1>
+                        <h2>{{ __('main.sub.invite') }}</h2>
                         <div class="row d-flex justify-content-center mt-5">
                             <div class="col-md-8">
                                 <form action="#" class="subscribe-form">
                                     <div class="form-group d-flex">
-                                        <input type="text" class="form-control" placeholder="Enter email address">
-                                        <input type="submit" value="Subscribe" class="submit px-3">
+                                        <input type="text" class="form-control" placeholder="{{ __('main.sub.input') }}">
+                                        <input type="submit" value="{{ __('main.sub.button') }}" class="submit px-3">
                                     </div>
                                 </form>
                             </div>

@@ -8,6 +8,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"/>
 
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" href="{{ asset("css/open-iconic-bootstrap.min.css") }}">
@@ -44,25 +45,26 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item @if(Request::is("/")) active @endif"><a href="{{ route("home") }}" class="nav-link">Home</a></li>
-                <li class="nav-item @if(Request::is("/catalog")) active @endif"><a href="{{ route("catalog") }}" class="nav-link">Catalog</a></li>
-                <li class="nav-item @if(Request::is("/about")) active @endif"><a href="{{ route("about") }}" class="nav-link">About</a></li>
-                <li class="nav-item @if(Request::is("/contact")) active @endif"><a href="{{ route("contact") }}" class="nav-link">Contact</a></li>
+                <li class="nav-item @if(Request::is("/")) active @endif"><a href="{{ route("home") }}" class="nav-link">{{ __('main.menu.home') }}</a></li>
+                <li class="nav-item @if(Request::is("/catalog")) active @endif"><a href="{{ route("catalog") }}" class="nav-link">{{ __('main.menu.catalog') }}</a></li>
+                <li class="nav-item @if(Request::is("/about")) active @endif"><a href="{{ route("about") }}" class="nav-link">{{ __('main.menu.about') }}</a></li>
+                <li class="nav-item @if(Request::is("/contact")) active @endif"><a href="{{ route("contact") }}" class="nav-link">{{ __('main.menu.contact') }}</a></li>
 
                 @auth
-                    <li class="nav-item"><a href="{{ route("account") }}" class="nav-link" style="text-decoration: underline;">Account</a></li>
-                    <li class="nav-item"><a href="{{ route("logout") }}" class="nav-link" style="text-decoration: underline;">Logout</a></li>
+                    <li class="nav-item"><a href="{{ route("account") }}" class="nav-link" style="text-decoration: underline;">{{ __('main.menu.account') }}</a></li>
+                    <li class="nav-item"><a href="{{ route("logout") }}" class="nav-link" style="text-decoration: underline;">{{ __('main.menu.logout') }}</a></li>
                 @else
                     @if(Route::has("login"))
-                        <li class="nav-item"><a href="{{ route("login") }}" class="nav-link" style="text-decoration: underline;">Login</a></li>
+                        <li class="nav-item"><a href="{{ route("login") }}" class="nav-link" style="text-decoration: underline;">{{ __('main.menu.login') }}</a></li>
                     @endif
                     @if(Route::has("register"))
-                        <li class="nav-item"><a href="{{ route("register") }}" class="nav-link" style="text-decoration: underline;">Register</a></li>
+                        <li class="nav-item"><a href="{{ route("register") }}" class="nav-link" style="text-decoration: underline;">{{ __('main.menu.register') }}</a></li>
                     @endif
                 @endauth
                 <li class="nav-item cta cta-colored"><a href="{{ route("cart") }}" class="nav-link shop-cart"><i class="fas fa-shopping-cart"></i>[{{ $total_cart }}]</a></li>
-
             </ul>
+            <a href="{{ route('changeLocale', 'en') }}" class="locale"><span class="fi fi-gb"></span></a>
+            <a href="{{ route('changeLocale', 'ua') }}" class="locale"><span class="fi fi-ua"></span></a>
         </div>
     </div>
 </nav>
@@ -75,7 +77,7 @@
         <div class="row mb-5">
             <div class="col-md">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Modist</h2>
+                    <h2 class="ftco-heading-2">BG Entertainment</h2>
                     <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                         <li class="ftco-animate"><a href="#"><i class="fa fa-twitter"></i></a></li>
                         <li class="ftco-animate"><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -85,7 +87,7 @@
             </div>
             <div class="col-md">
                 <div class="ftco-footer-widget mb-4 ml-md-5">
-                    <h2 class="ftco-heading-2">Menu</h2>
+                    <h2 class="ftco-heading-2">{{ __('main.footer.menu') }}</h2>
                     <ul class="list-unstyled">
                         <li><a href="#" class="py-2 d-block">Shop</a></li>
                         <li><a href="#" class="py-2 d-block">About</a></li>
@@ -96,7 +98,7 @@
             </div>
             <div class="col-md-4">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Help</h2>
+                    <h2 class="ftco-heading-2">{{ __('main.footer.help') }}</h2>
                     <div class="d-flex">
                         <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
                             <li><a href="#" class="py-2 d-block">Shipping Information</a></li>
@@ -113,10 +115,10 @@
             </div>
             <div class="col-md">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Have a Questions?</h2>
+                    <h2 class="ftco-heading-2">{{ __('main.footer.question') }}</h2>
                     <div class="block-23 mb-3">
                         <ul>
-                            <li><i class="fas fa-map-marker-alt"></i><span class="text">{{ $site->contact_location }}</span></li>
+                            <li><i class="fas fa-map-marker-alt"></i><span class="text">{{ app()->getLocale() == 'en' ? $site->contact_location : $site->contact_location_ua }}</span></li>
                             <li><a href="#"><i class="fa fa-phone"></i><span class="text">{{ $site->contact_phone }}</span></a></li>
                             <li><a href="#"><i class="fa fa-envelope"></i><span class="text">{{ $site->contact_email }}</span></a></li>
                         </ul>

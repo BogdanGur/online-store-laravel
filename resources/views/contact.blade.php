@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center">
                 <div class="col-md-9 ftco-animate text-center">
-                    <h1 class="mb-0 bread">Contact Us</h1>
+                    <h1 class="mb-0 bread">{{ __('contact.title') }}</h1>
                     <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Contact</span></p>
                 </div>
             </div>
@@ -20,19 +20,19 @@
                 <div class="col-md-6 order-md-last d-flex">
                     <form action="#" class="bg-white p-5 contact-form">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Name">
+                            <input type="text" class="form-control" placeholder="{{ __('contact.form.name') }}">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Email">
+                            <input type="text" class="form-control" placeholder="{{ __('contact.form.email') }}">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Subject">
+                            <input type="text" class="form-control" placeholder="{{ __('contact.form.subject') }}">
                         </div>
                         <div class="form-group">
-                            <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+                            <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="{{ __('contact.form.message') }}"></textarea>
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+                            <input type="submit" value="{{ __('contact.form.button') }}" class="btn btn-primary py-3 px-5">
                         </div>
                     </form>
 
@@ -46,12 +46,12 @@
                 <div class="w-100"></div>
                 <div class="col-md-3 d-flex">
                     <div class="info bg-white p-4">
-                        <p><span>Address:</span> {{ $site->contact_location }}</p>
+                        <p><span>{{ __('contact.info.address') }}:</span> {{ app()->getLocale() == 'en' ? $site->contact_location : $site->contact_location_ua }}</p>
                     </div>
                 </div>
                 <div class="col-md-3 d-flex">
                     <div class="info bg-white p-4">
-                        <p><span>Phone:</span> <a href="tel:{{ $site->contact_phone }}">{{ $site->contact_phone }}</a></p>
+                        <p><span>{{ __('contact.info.phone') }}:</span> <a href="tel:{{ $site->contact_phone }}">{{ $site->contact_phone }}</a></p>
                     </div>
                 </div>
                 <div class="col-md-3 d-flex">
@@ -61,7 +61,7 @@
                 </div>
                 <div class="col-md-3 d-flex">
                     <div class="info bg-white p-4">
-                        <p><span>Website</span> <a href="{{ Illuminate\Support\Facades\URL::route("home") }}">{{ \Illuminate\Support\Facades\URL::route("home") }}</a></p>
+                        <p><span>{{ __('contact.info.website') }}:</span> <a href="{{ Illuminate\Support\Facades\URL::route("home") }}">{{ \Illuminate\Support\Facades\URL::route("home") }}</a></p>
                     </div>
                 </div>
             </div>
@@ -73,14 +73,14 @@
             <div class="container">
                 <div class="row d-flex justify-content-center py-5">
                     <div class="col-md-7 text-center heading-section ftco-animate">
-                        <h1 class="big">Subscribe</h1>
-                        <h2>Subcribe to our Newsletter</h2>
+                        <h1 class="big">{{ __('main.sub.subscribe') }}</h1>
+                        <h2>{{ __('main.sub.invite') }}</h2>
                         <div class="row d-flex justify-content-center mt-5">
                             <div class="col-md-8">
                                 <form action="#" class="subscribe-form">
                                     <div class="form-group d-flex">
-                                        <input type="text" class="form-control" placeholder="Enter email address">
-                                        <input type="submit" value="Subscribe" class="submit px-3">
+                                        <input type="text" class="form-control" placeholder="{{ __('main.sub.input') }}">
+                                        <input type="submit" value="{{ __('main.sub.button') }}" class="submit px-3">
                                     </div>
                                 </form>
                             </div>

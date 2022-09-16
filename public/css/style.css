@@ -12799,7 +12799,7 @@ h2 {
     width: 100%;
     font-weight: 700;
     font-size: 14px;
-    padding: 10px 20px 10px 140px;
+    padding: 10px 20px 10px 160px;
 }
 .sign-up-content textarea {
     border: solid 2px #ebebeb;
@@ -13434,6 +13434,9 @@ h2 {
 }
 .search-prod .input-group {
     width: auto;
+}
+.locale {
+    margin: 0 3px;
 }
 
 @media screen and (max-width: 768px) {

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string("banner");
             $table->text("about_photo");
             $table->string("about_title");
-            $table->text("about_textarea");
+            $table->text("about_content");
             $table->string("contact_location");
             $table->string("contact_phone");
             $table->string("contact_email");

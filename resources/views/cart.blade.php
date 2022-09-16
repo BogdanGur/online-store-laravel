@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center">
                 <div class="col-md-9 ftco-animate text-center">
-                    <h1 class="mb-0 bread">My Cart</h1>
+                    <h1 class="mb-0 bread">{{ __('cart.title') }}</h1>
                     <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Cart</span></p>
                 </div>
             </div>
@@ -27,12 +27,12 @@
                             <thead class="thead-primary">
                             <tr class="text-center">
                                 <th>&nbsp;</th>
-                                <th>Photo</th>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Size</th>
-                                <th>Quantity</th>
-                                <th>Total</th>
+                                <th>{{ __('cart.header.photo') }}</th>
+                                <th>{{ __('cart.header.name') }}</th>
+                                <th>{{ __('cart.header.price') }}</th>
+                                <th>{{ __('cart.header.size') }}</th>
+                                <th>{{ __('cart.header.quantity') }}</th>
+                                <th>{{ __('cart.header.total') }}</th>
                             </tr>
                             </thead>
                                 <tbody>
@@ -82,27 +82,26 @@
             <div class="row justify-content-end">
                 <div class="col col-lg-5 col-md-6 mt-5 cart-wrap ftco-animate">
                     <div class="cart-total mb-3">
-                        <h3>Cart Totals</h3>
+                        <h3>{{ __('cart.checkout.title') }}</h3>
                         <p class="d-flex">
-                            <span>Subtotal</span>
+                            <span>{{ __('cart.checkout.subtotal') }}</span>
                             <span>${{ $full_price }}</span>
                         </p>
                         <p class="d-flex">
-                            <span>Delivery</span>
+                            <span>{{ __('cart.checkout.delivery') }}</span>
                             <span>$0.00</span>
                         </p>
                         <p class="d-flex">
-                            <span>Discount</span>
+                            <span>{{ __('cart.checkout.discount') }}</span>
                             <span>${{ $discount }}</span>
                         </p>
                         <hr>
                         <p class="d-flex total-price">
-                            <span>Total</span>
+                            <span>{{ __('cart.checkout.total') }}</span>
                             <span>${{ $total }}</span>
                         </p>
                     </div>
-                    <p class="text-center"><a href="{{ route("cart.checkoutAdd") }}/?price={{ $total }}&subtotal={{ $full_price }}&discount={{ $discount }}" class="btn btn-primary py-3 px-4">Proceed to
-                            Checkout</a></p>
+                    <p class="text-center"><a href="{{ route("cart.checkoutAdd") }}/?price={{ $total }}&subtotal={{ $full_price }}&discount={{ $discount }}" class="btn btn-primary py-3 px-4">{{ __('cart.button') }}</a></p>
 
                     <br>
                     @if(session("error"))
@@ -115,7 +114,7 @@
     @else
         <section class="ftco-section ftco-cart">
             <div class="container">
-                <h1 style="text-align: center;">Empty</h1>
+                <h1 style="text-align: center;">{{ __('cart.empty') }}</h1>
             </div>
         </section>
     @endif
@@ -125,14 +124,14 @@
             <div class="container">
                 <div class="row d-flex justify-content-center py-5">
                     <div class="col-md-7 text-center heading-section ftco-animate">
-                        <h1 class="big">Subscribe</h1>
-                        <h2>Subcribe to our Newsletter</h2>
+                        <h1 class="big">{{ __('main.sub.subscribe') }}</h1>
+                        <h2>{{ __('main.sub.invite') }}</h2>
                         <div class="row d-flex justify-content-center mt-5">
                             <div class="col-md-8">
                                 <form action="#" class="subscribe-form">
                                     <div class="form-group d-flex">
-                                        <input type="text" class="form-control" placeholder="Enter email address">
-                                        <input type="submit" value="Subscribe" class="submit px-3">
+                                        <input type="text" class="form-control" placeholder="{{ __('main.sub.input') }}">
+                                        <input type="submit" value="{{ __('main.sub.button') }}" class="submit px-3">
                                     </div>
                                 </form>
                             </div>

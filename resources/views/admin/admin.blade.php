@@ -61,7 +61,7 @@
                     <div class="user-info">
                         <div class="user-photo">
                         @if($admin->photo)
-                            <img src="{{ \Illuminate\Support\Facades\Storage::url("public/admin_photos/".$admin->photo) }}" alt="">
+                            <img src="{{ \Illuminate\Support\Facades\Storage::url("public/admin_photos/".$admin->photo) ?? asset("images/photo.jpg") }}" alt="">
                         @else
                             <img src="{{ asset("images/photo.jpg") }}" alt="">
                         @endif
@@ -147,7 +147,7 @@
                                         <div class="product-cont">
                                             <div class="product-block">
                                                 <div class="left-pr-info">
-                                                    <div class="pr-img"><img src="{{ \Illuminate\Support\Facades\Storage::url("public/product_photos/".$product->image->img) }}" alt=""></div>
+                                                    <div class="pr-img"><img src="{{ \Illuminate\Support\Facades\Storage::url("public/product_photos/".$product->image->img) ?? asset("images/photo.jpg") }}" alt=""></div>
                                                     <div class="pr-name-desc">
                                                         <div class="pr-name">{{ $product->name }}</div>
                                                         <p class="pr-desc">{{ \Illuminate\Support\Str::words($product->description, 5) }}</p>
@@ -354,11 +354,27 @@
                                 @endif
 
                                 <div class="form-textbox">
+                                    <label for="name">Home title UA</label>
+                                    <input type="text" name="home_title_ua" value="{{ $site->home_title_ua }}">
+                                </div>
+                                @if($errors->has("home_title_ua"))
+                                    <div class="alert alert-danger">{{ $errors->first("home_title_ua") }}</div>
+                                @endif
+
+                                <div class="form-textbox">
                                     <label for="surname">Home subtitle</label>
                                     <input type="text" name="home_subtitle" value="{{ $site->home_subtitle }}">
                                 </div>
                                 @if($errors->has("home_subtitle"))
                                     <div class="alert alert-danger">{{ $errors->first("home_subtitle") }}</div>
+                                @endif
+
+                                <div class="form-textbox">
+                                    <label for="surname">Home subtitle UA</label>
+                                    <input type="text" name="home_subtitle_ua" value="{{ $site->home_subtitle_ua }}">
+                                </div>
+                                @if($errors->has("home_subtitle_ua"))
+                                    <div class="alert alert-danger">{{ $errors->first("home_subtitle_ua") }}</div>
                                 @endif
 
                                 <div class="form-textbox">
@@ -370,6 +386,14 @@
                                 @endif
 
                                 <div class="form-textbox">
+                                    <label for="name">Home mini about UA</label>
+                                    <input type="text" name="home_mini_about_ua" value="{{ $site->home_mini_about_ua }}">
+                                </div>
+                                @if($errors->has("home_mini_about_ua"))
+                                    <div class="alert alert-danger">{{ $errors->first("home_mini_about_ua") }}</div>
+                                @endif
+
+                                <div class="form-textbox">
                                     <label for="name">Home since</label>
                                     <input type="text" name="home_since" value="{{ $site->home_since }}">
                                 </div>
@@ -378,11 +402,27 @@
                                 @endif
 
                                 <div class="form-textbox">
+                                    <label for="name">Home since UA</label>
+                                    <input type="text" name="home_since_ua" value="{{ $site->home_since_ua }}">
+                                </div>
+                                @if($errors->has("home_since_ua"))
+                                    <div class="alert alert-danger">{{ $errors->first("home_since_ua") }}</div>
+                                @endif
+
+                                <div class="form-textbox">
                                     <label for="surname">Banner</label>
                                     <input type="text" name="banner" value="{{ $site->banner }}">
                                 </div>
                                 @if($errors->has("banner"))
                                     <div class="alert alert-danger">{{ $errors->first("banner") }}</div>
+                                @endif
+
+                                <div class="form-textbox">
+                                    <label for="surname">Banner UA</label>
+                                    <input type="text" name="banner_ua" value="{{ $site->banner_ua }}">
+                                </div>
+                                @if($errors->has("banner_ua"))
+                                    <div class="alert alert-danger">{{ $errors->first("banner_ua") }}</div>
                                 @endif
 
                                 <h3>About Section</h3>
@@ -404,10 +444,25 @@
                                 @endif
 
                                 <div class="form-textbox">
+                                    <label for="surname">About title UA</label>
+                                    <input type="text" name="about_title_ua" value="{{ $site->about_title_ua }}">
+                                </div>
+                                @if($errors->has("about_title_ua"))
+                                    <div class="alert alert-danger">{{ $errors->first("about_title_ua") }}</div>
+                                @endif
+
+                                <div class="form-textbox">
                                     <textarea name="about_content" placeholder="About content">{{ $site->about_content }}</textarea>
                                 </div>
                                 @if($errors->has("about_content"))
                                     <div class="alert alert-danger">{{ $errors->first("about_content") }}</div>
+                                @endif
+
+                                <div class="form-textbox">
+                                    <textarea name="about_content_ua" placeholder="About content UA">{{ $site->about_content_ua }}</textarea>
+                                </div>
+                                @if($errors->has("about_content_ua"))
+                                    <div class="alert alert-danger">{{ $errors->first("about_content_ua") }}</div>
                                 @endif
 
                                 <h3>Contact</h3>
@@ -418,6 +473,14 @@
                                 </div>
                                 @if($errors->has("contact_location"))
                                     <div class="alert alert-danger">{{ $errors->first("contact_location") }}</div>
+                                @endif
+
+                                <div class="form-textbox">
+                                    <label for="surname">Location UA</label>
+                                    <input type="text" name="contact_location_ua" value="{{ $site->contact_location_ua }}">
+                                </div>
+                                @if($errors->has("contact_location_ua"))
+                                    <div class="alert alert-danger">{{ $errors->first("contact_location_ua") }}</div>
                                 @endif
 
                                 <div class="form-textbox">
@@ -468,9 +531,6 @@
                                                         <div class="order-status status-declined">Declined</div>
                                                     @endif
                                                 </div>
-                                                @if($order->status == "process")
-                                                    <a href="{{ route("checkout") }}" class="order-to-btn"><i class="fas fa-arrow-right"></i></a>
-                                                @endif
                                                 <div class="order-date">{{ date("d/m/Y", strtotime($order->updated_at)) }}</div>
                                             </div>
                                             <div class="order-products-block">
