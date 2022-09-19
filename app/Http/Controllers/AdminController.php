@@ -26,15 +26,14 @@ class AdminController extends Controller
 {
     public function index() {
 
-        if(Auth::guard("admin")->check()) {
-            return view("admin.admin", [
-                "admin" => Admin::find(Auth::guard("admin")->id()),
-                "products" => Product::all(),
-                "site" => Site::find(1),
-                "orders" => Order::all()
-            ]);
-        }
-        return redirect()->route("admin.loginShow");
+        if(!Auth::guard("admin")->check()) return redirect()->route("admin.loginShow");
+
+        return view("admin.admin", [
+            "admin" => Admin::find(Auth::guard("admin")->id()),
+            "products" => Product::all(),
+            "site" => Site::find(1),
+            "orders" => Order::all()
+        ]);
     }
 
     public function showLogin() {

@@ -18,7 +18,9 @@ class HomeController extends Controller
 
         $s = \request("q");
 
-        return view("home", ["site" => Site::findOrFail(1), "products" => Product::where("name", "LIKE", "%{$s}%")->paginate(5), "total_cart" => count(Cart::where("user_id", Auth::id())->get())]);
+        return view("home", [
+            "products" => Product::where("name", "LIKE", "%{$s}%")->paginate(5)
+        ]);
     }
     public function changeLocale($lang) {
         Session::put('locale', $lang);

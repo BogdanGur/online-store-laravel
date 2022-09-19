@@ -25,7 +25,10 @@ class CheckoutController extends Controller
             return back()->with(["success" => "У вас нету Ордеров"]);
         }
 
-        return view("checkout", ["site" => Site::find(1), "products" => Cart::where("user_id", Auth::id())->get(), "total_cart" => count(Cart::where("user_id", Auth::id())->get()), "order" => Order::where("user_id", Auth::id())->where("status", "process")->first()]);
+        return view("checkout", [
+            "products" => Cart::where("user_id", Auth::id())->get(),
+            "order" => Order::where("user_id", Auth::id())->where("status", "process")->first()
+        ]);
     }
 
     public function deleteOrder($id) {

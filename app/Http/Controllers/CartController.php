@@ -17,7 +17,9 @@ class CartController extends Controller
 {
     public function index() {
 
-        return view("cart", ["site" => Site::find(1), "products" => Cart::where("user_id", Auth::id())->get(), "total_cart" => count(Cart::where("user_id", Auth::id())->get())]);
+        return view("cart", [
+            "products" => Cart::where("user_id", Auth::id())->get()
+        ]);
     }
 
     public function addProduct(CartRequest $request) {

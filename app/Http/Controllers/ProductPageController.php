@@ -12,6 +12,8 @@ class ProductPageController extends Controller
 {
     public function index($slug) {
 
-        return view("product_page", ["product" => Product::where("slug", $slug)->first(), "site" => Site::find(1), "total_cart" => count(Cart::where("user_id", Auth::id())->get())]);
+        return view("product_page", [
+            "product" => Product::where("slug", $slug)->first()
+        ]);
     }
 }

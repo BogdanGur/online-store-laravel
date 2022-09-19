@@ -21,8 +21,6 @@ class AccountController extends Controller
         return view("account",
             [
                 "user" => User::find(Auth::id()),
-                "site" => Site::find(1),
-                "total_cart" => count(Cart::where("user_id", Auth::id())->get()),
                 "liked" => Like::where("user_id", Auth::id())->get(),
                 "orders" => Order::where("user_id", Auth::id())->get()
             ]);
